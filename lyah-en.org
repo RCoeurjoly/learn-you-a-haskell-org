@@ -53,7 +53,7 @@
  <<ch001.xhtml#so-whats-haskell>>
 *** So what's Haskell?
 
- [[file:media/file1.png]] Haskell is a /purely functional programming
+ [[file:media/fx.png]] Haskell is a /purely functional programming
  language/. In imperative languages you get things done by giving the
  computer a sequence of tasks and then it executes them. While executing
  them, it can change state. For instance, you set variable =a= to 5 and
@@ -77,7 +77,7 @@
  prove) that a function is correct and then build more complex functions
  by gluing simple functions together.
 
- [[file:media/file2.png]] Haskell is /lazy/. That means that unless
+ [[file:media/lazy.png]] Haskell is /lazy/. That means that unless
  specifically told otherwise, Haskell won't execute functions and
  calculate things until it's really forced to show you a result. That
  goes well with referential transparency and it allows you to think of
@@ -101,7 +101,7 @@
  initial data and efficiently transform and mend it so it resembles what
  you want at the end.
 
- [[file:media/file3.png]] Haskell is /statically typed/. When you compile
+ [[file:media/boat.png]] Haskell is /statically typed/. When you compile
  your program, the compiler knows which piece of code is a number, which
  is a string and so on. That means that a lot of possible errors are
  caught at compile time. If you try to add together a number and a
@@ -160,7 +160,7 @@
 *** DONE Ready, set, go!
     CLOSED: [2020-04-28 Tue 19:31]
 
- [[file:media/file4.png]] Alright, let's get started! If you're the sort
+ [[file:media/startingout.png]] Alright, let's get started! If you're the sort
  of horrible person who doesn't read introductions to things and you
  skipped it, you might want to read the last section in the introduction
  anyway because it explains what you need to follow this tutorial and how
@@ -293,7 +293,7 @@ not (True && True)
  what we call an /infix/ function. Most functions that aren't used with
  numbers are /prefix/ functions. Let's take a look at them.
 
- [[file:media/file5.png]] Functions are usually prefix so from now on we
+ [[file:media/ringring.png]] Functions are usually prefix so from now on we
  won't explicitly state that a function is of the prefix form, we'll just
  assume it. In most imperative languages functions are called by writing
  the function name and then writing its parameters in parentheses,
@@ -509,7 +509,7 @@ doubleMe 8
  <<ch002.xhtml#an-intro-to-lists>>
 *** TODO An intro to lists
 
- [[file:media/file7.png]] Much like shopping lists in the real world,
+ [[file:media/list.png]] Much like shopping lists in the real world,
  lists in Haskell are very useful. It's the most used data structure and
  it can be used in a multitude of different ways to model and solve a
  whole bunch of problems. Lists are SO awesome. In this section we'll
@@ -785,7 +785,7 @@ doubleMe 8
  <<ch002.xhtml#texas-ranges>>
 *** TODO Texas ranges
 
- [[file:media/file9.png]] What if we want a list of all numbers between 1
+ [[file:media/cowboy.png]] What if we want a list of all numbers between 1
  and 20? Sure, we could just type them all out but obviously that's not a
  solution for gentlemen who demand excellence from their programming
  languages. Instead, we'll use ranges. Ranges are a way of making lists
@@ -900,11 +900,11 @@ replicate 3 10
  <<ch002.xhtml#im-a-list-comprehension>>
 *** TODO I'm a list comprehension
 
- [[file:media/file10.png]] If you've ever taken a course in mathematics,
+ [[file:media/kermit.png]] If you've ever taken a course in mathematics,
  you've probably run into /set comprehensions/. They're normally used for
  building more specific sets out of general sets. A basic comprehension
  for a set that contains the first ten even natural numbers is
- [[file:media/file11.png]]. The part before the pipe is called the output
+ [[file:media/setnotation.png]]. The part before the pipe is called the output
  function, =x= is the variable, =N= is the input set and =x <= 10= is the
  predicate. That means that the set contains the doubles of all natural
  numbers that satisfy the predicate.
@@ -1660,7 +1660,7 @@ Passed:
     4 == 5 :: Bool
  #+END_EXAMPLE
 
- [[file:media/file15.png]] Here we see that doing =:t= on an expression
+ [[file:media/bomb.png]] Here we see that doing =:t= on an expression
  prints out the expression followed by =::= and its type. =::= is read as
  “has type of”. Explicit types are always denoted with the first letter
  in capital case. ='a'=, as it would seem, has a type of =Char=. It's not
@@ -1788,7 +1788,7 @@ Passed:
     head :: [a] -> a
  #+END_EXAMPLE
 
- [[file:media/file16.png]] Hmmm! What is this =a=? Is it a type? Remember
+ [[file:media/box.png]] Hmmm! What is this =a=? Is it a type? Remember
  that we previously stated that types are written in capital case, so it
  can't exactly be a type. Because it's not in capital case it's actually
  a /type variable/. That means that =a= can be of any type. This is much
@@ -4223,7 +4223,7 @@ main = print $ bmiTell 19
 *** TODO Function composition
 
  In mathematics, function composition is defined like this:
- [[file:media/file38.png]], meaning that composing two functions produces
+ [[file:media/composition.png]], meaning that composing two functions produces
  a new function that, when called with a parameter, say, /x/ is the
  equivalent of calling /g/ with the parameter /x/ and then calling the
  /f/ with that result.
@@ -9866,7 +9866,7 @@ main = print $ bmiTell 19
 *** TODO Command line arguments
 
  #+CAPTION: COMMAND LINE ARGUMENTS!!! ARGH
- [[file:media/file64.png]]
+ [[file:media/arguments.png]]
 
  Dealing with command line arguments is pretty much a necessity if you
  want to make a script or application that runs on a terminal. Luckily,
@@ -10178,7 +10178,7 @@ main = print $ bmiTell 19
 
  #+CAPTION: this picture is the ultimate source of randomness and
  wackiness
- [[file:media/file66.png]]
+ [[file:media/random.png]]
 
  Many times while programming, you need to get some random data. Maybe
  you're making a game where a die needs to be thrown or you need to
@@ -10610,7 +10610,7 @@ main = print $ bmiTell 19
 
  #+CAPTION: like normal string, only they byte ... what a pedestrian pun
  this is
- [[file:media/file68.png]]
+ [[file:media/chainchomp.png]]
 
  Lists are a cool and useful data structure. So far, we've used them
  pretty much everywhere. There are a multitude of functions that operate
@@ -10868,7 +10868,7 @@ main = print $ bmiTell 19
 
  #+CAPTION: Stop right there, criminal scum! Nobody breaks the law on my
  watch! Now pay your fine or it's off to jail.
- [[file:media/file70.png]]
+ [[file:media/police.png]]
 
  Pure code can throw exceptions, but they can only be caught in the I/O
  part of our code (when we're inside a /do/ block that goes into =main=).
@@ -11738,7 +11738,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: this is you
- [[file:media/file76.png]]
+ [[file:media/guycar.png]]
 
  What's going on here? First, calculate the optimal price on road A based
  on the best so far on A and we do the same for B. We do
@@ -12201,7 +12201,7 @@ main = print $ bmiTell 19
  but the result of that computation is modified with the function.
 
  #+CAPTION: lifting a function is easier than lifting a million pounds
- [[file:media/file79.png]]
+ [[file:media/lifter.png]]
 
  Before we go on to the rules that =fmap= should follow, let's think
  about the type of =fmap= once more. Its type is
@@ -12333,7 +12333,7 @@ main = print $ bmiTell 19
  =fmap=, we see that the law =fmap id = id= holds.
 
  #+CAPTION: justice is blind, but so is my dog
- [[file:media/file80.png]]
+ [[file:media/justice.png]]
 
  /The second law says that composing two functions and then mapping the
  resulting function over a functor should be the same as first mapping
@@ -13409,7 +13409,7 @@ main = print $ bmiTell 19
 *** TODO The newtype keyword
 
  #+CAPTION: why\_ so serious?
- [[file:media/file85.png]]
+ [[file:media/maoi.png]]
 
  So far, we've learned how to make our own algebraic data types by using
  the /data/ keyword. We've also learned how to give existing types
@@ -13822,7 +13822,7 @@ main = print $ bmiTell 19
 *** TODO Monoids
 
  #+CAPTION: wow this is pretty much the gayest pirate ship ever
- [[file:media/file88.png]]
+ [[file:media/pirateship.png]]
 
  Type classes in Haskell are used to present an interface for types that
  have some behavior in common. We started out with simple type classes
@@ -14231,7 +14231,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: did anyone ORDER pizza?!?! I can't BEAR these puns!
- [[file:media/file91.png]]
+ [[file:media/bear.png]]
 
  The instance is set up like this: when we =mappend= two =Ordering=
  values, the one on the left is kept, unless the value on the left is
@@ -16302,7 +16302,7 @@ main = print $ bmiTell 19
 
  #+CAPTION: there are two kinds of people in the world, my friend. those
  who learn them a haskell and those who have the job of coding java
- [[file:media/file105.png]]
+ [[file:media/clint.png]]
 
  We've seen how monads can be used to take values with contexts and apply
  them to functions and how using =>>== or =do= notation allows us to
@@ -16372,7 +16372,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: when you have to poop, poop, don't talk
- [[file:media/file106.png]]
+ [[file:media/tuco.png]]
 
  So far so good. =isBigGang= takes a normal value and returns a value
  with a context. As we've just seen, feeding it a normal value is not a
@@ -16587,7 +16587,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: when you have to poop, poop, don't talk
- [[file:media/file107.png]]
+ [[file:media/angeleyes.png]]
 
  First off, let's examine =>>==. Its implementation is essentially the
  same as =applyLog=, only now that our tuple is wrapped in the
