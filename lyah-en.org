@@ -28,7 +28,7 @@
  you like.
 
  #+CAPTION: bird
- [[file:media/file0.png]]
+ [[file:media/origami.png]]
 
  This tutorial is aimed at people who have experience in imperative
  programming languages (C, C++, Java, Python ...) but haven't programmed
@@ -461,7 +461,7 @@ doubleMe 8
  #+END_EXAMPLE
 
  #+CAPTION: this is you
- [[file:media/file6.png]]
+ [[file:media/guycar.png]]
 
  Right here we introduced Haskell's if statement. You're probably
  familiar with if statements from other languages. The difference between
@@ -672,7 +672,7 @@ doubleMe 8
  If we think of a list as a monster, here's what's what.
 
  #+CAPTION: list monster
- [[file:media/file8.png]]
+ [[file:media/listmonster.png]]
 
  But what happens if we try to get the head of an empty list?
 
@@ -1457,7 +1457,7 @@ Passed:
 *** TODO Tuples
 
  #+CAPTION: tuples
- [[file:media/file12.png]]
+ [[file:media/tuple.png]]
 
  In some ways, tuples are like lists --- they are a way to store several
  values into a single value. However, there are a few fundamental
@@ -1577,7 +1577,7 @@ Passed:
  #+END_EXAMPLE
 
  #+CAPTION: look at meee
- [[file:media/file13.png]]
+ [[file:media/pythag.png]]
 
  Here's a problem that combines tuples and list comprehensions: which
  right triangle that has integers for all sides and all sides equal to or
@@ -1621,7 +1621,7 @@ Passed:
 *** TODO Believe the type
 
  #+CAPTION: moo
- [[file:media/file14.png]]
+ [[file:media/cow.png]]
 
  Previously we mentioned that Haskell has a static type system. The type
  of every expression is known at compile time, which leads to safer code.
@@ -1823,7 +1823,7 @@ Passed:
 *** TODO Typeclasses 101
 
  #+CAPTION: class
- [[file:media/file17.png]]
+ [[file:media/classes.png]]
 
  A typeclass is a sort of interface that defines some behavior. If a type
  is a part of a typeclass, that means that it supports and implements the
@@ -2106,7 +2106,7 @@ Passed:
 *** TODO Pattern matching
 
  #+CAPTION: four!
- [[file:media/file18.png]]
+ [[file:media/pattern.png]]
 
  This chapter will cover some of Haskell's cool syntactic constructs and
  we'll start with pattern matching. Pattern matching consists of
@@ -2406,7 +2406,7 @@ Passed:
 *** TODO Guards, guards!
 
  #+CAPTION: guards
- [[file:media/file19.png]]
+ [[file:media/guards.png]]
 
  Whereas patterns are a way of making sure a value conforms to some form
  and deconstructing it, guards are a way of testing whether some property
@@ -2679,7 +2679,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: let it be
- [[file:media/file20.png]]
+ [[file:media/letitbe.png]]
 
  The form is =let <bindings> in <expression>=. The names that you define
  in the /let/ part are accessible to the expression after the /in/ part.
@@ -2787,7 +2787,7 @@ main = print $ bmiTell 19
 *** TODO Case expressions
 
  #+CAPTION: case
- [[file:media/file21.png]]
+ [[file:media/case.png]]
 
  Many imperative languages (C, C++, Java, etc.) have case syntax and if
  you've ever programmed in them, you probably know what it's about. It's
@@ -2863,7 +2863,7 @@ main = print $ bmiTell 19
 *** TODO Hello recursion!
 
  #+CAPTION: SOVIET RUSSIA
- [[file:media/file22.png]]
+ [[file:media/recursion.png]]
 
  We mention recursion briefly in the previous chapter. In this chapter,
  we'll take a closer look at recursion, why it's important to Haskell and
@@ -2971,7 +2971,7 @@ main = print $ bmiTell 19
  the first element and the maximum of the tail.
 
  #+CAPTION: max
- [[file:media/file23.png]]
+ [[file:media/maxs.png]]
 
  <<ch005.xhtml#a-few-more-recursive-functions>>
 *** TODO A few more recursive functions
@@ -3021,7 +3021,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: painter
- [[file:media/file24.png]]
+ [[file:media/painter.png]]
 
  The first pattern specifies that if we try to take a 0 or negative
  number of elements, we get an empty list. Notice that we're using =_= to
@@ -3122,7 +3122,7 @@ main = print $ bmiTell 19
  showcase how elegant Haskell is.
 
  #+CAPTION: quickman
- [[file:media/file25.png]]
+ [[file:media/quickman.png]]
 
  So, the type signature is going to be
  =quicksort :: (Ord a) => [a] -> [a]=. No surprises there. The edge
@@ -3171,7 +3171,7 @@ main = print $ bmiTell 19
  virtue of being empty. Here's an illustration:
 
  #+CAPTION: quicksort
- [[file:media/file26.png]]
+ [[file:media/quicksort.png]]
 
  An element that is in place and won't move anymore is represented in
  orange. If you read them from left to right, you'll see the sorted list.
@@ -3197,7 +3197,7 @@ main = print $ bmiTell 19
  Ekcetera, ekcetera ...
 
  #+CAPTION: brain
- [[file:media/file27.png]]
+ [[file:media/brain.png]]
 
  Of course, these also have edge cases. Usually the edge case is some
  scenario where a recursive application doesn't make sense. When dealing
@@ -3231,7 +3231,7 @@ main = print $ bmiTell 19
 ** TODO Higher order functions
 
  #+CAPTION: sun
- [[file:media/file28.png]]
+ [[file:media/sun.png]]
 
  Haskell functions can take functions as parameters and return functions
  as return values. A function that does either of those is called a
@@ -3268,7 +3268,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: haskell curry
- [[file:media/file29.png]]
+ [[file:media/curry.png]]
 
  Putting a space between two things is simply *function application*. The
  space is sort of like an operator and it has the highest precedence.
@@ -3410,7 +3410,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: rocktopus
- [[file:media/file30.png]]
+ [[file:media/bonus.png]]
 
  First of all, notice the type declaration. Before, we didn't need
  parentheses because =->= is naturally right-associative. However, here,
@@ -3652,7 +3652,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: map
- [[file:media/file31.png]]
+ [[file:media/concatmap.png]]
 
  Mapping and filtering is the bread and butter of every functional
  programmer's toolbox. Uh. It doesn't matter if you do it with the =map=
@@ -3812,7 +3812,7 @@ main = print $ bmiTell 19
 *** TODO Lambdas
 
  #+CAPTION: lambda
- [[file:media/file32.png]]
+ [[file:media/lambda.png]]
 
  Lambdas are basically anonymous functions that are used because we need
  some functions only once. Normally, we make a lambda with the sole
@@ -3838,7 +3838,7 @@ main = print $ bmiTell 19
  whether the length of the list passed to it is greater than 15.
 
  #+CAPTION: lamb
- [[file:media/file33.png]]
+ [[file:media/lamb.png]]
 
  People who are not well acquainted with how currying and partial
  application works often use lambdas where they don't need to. For
@@ -3909,7 +3909,7 @@ main = print $ bmiTell 19
 *** TODO Only folds and horses
 
  #+CAPTION: folded bird
- [[file:media/file34.png]]
+ [[file:media/origami.png]]
 
  Back when we were dealing with recursion, we noticed a theme throughout
  many of the recursive functions that operated on lists. Usually, we'd
@@ -3950,7 +3950,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: foldl
- [[file:media/file35.png]]
+ [[file:media/foldl.png]]
 
  Let's take an in-depth look into how this fold happens.
  =\acc x -> acc + x= is the binary function. =0= is the starting value
@@ -4040,7 +4040,7 @@ main = print $ bmiTell 19
  usually use right folds when we're building up new lists from a list.
 
  #+CAPTION: fold this up!
- [[file:media/file36.png]]
+ [[file:media/washmachine.png]]
 
  If you reverse a list, you can do a right fold on it just like you would
  have done a left fold and vice versa. Sometimes you don't even have to
@@ -4180,7 +4180,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: dollar
- [[file:media/file37.png]]
+ [[file:media/dollar.png]]
 
  What the heck? What is this useless operator? It's just function
  application! Well, almost, but not quite! Whereas normal function
@@ -4237,7 +4237,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: notes
- [[file:media/file39.png]]
+ [[file:media/notes.png]]
 
  Mind the type declaration. =f= must take as its parameter a value that
  has the same type as =g='s return value. So the resulting function takes
@@ -4383,7 +4383,7 @@ main = print $ bmiTell 19
 *** TODO Loading modules
 
  #+CAPTION: modules
- [[file:media/file40.png]]
+ [[file:media/making_modules.png]]
 
  A Haskell module is a collection of related functions, types and
  typeclasses. A Haskell program is a collection of modules where the main
@@ -4564,7 +4564,7 @@ main = print $ bmiTell 19
  to that produces our desired result.
 
  #+CAPTION: shopping lists
- [[file:media/file41.png]]
+ [[file:media/legolists.png]]
 
  =foldl'= and =foldl1'= are stricter versions of their respective lazy
  incarnations. When using lazy folds on really big lists, you might often
@@ -5152,7 +5152,7 @@ main = print $ bmiTell 19
 *** TODO Data.Char
 
  #+CAPTION: lego char
- [[file:media/file42.png]]
+ [[file:media/legochar.png]]
 
  The =Data.Char= module does what its name suggests. It exports functions
  that deal with characters. It's also helpful when filtering and mapping
@@ -5453,7 +5453,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: legomap
- [[file:media/file43.png]]
+ [[file:media/legomap.png]]
 
  Works like a charm! If we have the girl's phone number, we =Just= get
  the number, otherwise we get =Nothing=.
@@ -5688,7 +5688,7 @@ main = print $ bmiTell 19
 *** TODO Data.Set
 
  #+CAPTION: legosets
- [[file:media/file44.png]]
+ [[file:media/legosets.png]]
 
  The =Data.Set= module offers us, well, sets. Like sets from mathematics.
  Sets are kind of like a cross between lists and maps. All the elements
@@ -5827,7 +5827,7 @@ main = print $ bmiTell 19
 *** TODO Making our own modules
 
  #+CAPTION: making modules
- [[file:media/file45.png]]
+ [[file:media/making_modules.png]]
 
  We've looked at some cool modules so far, but how do we make our own
  module? Almost every programming language enables you to split your code
@@ -6057,7 +6057,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: caveman
- [[file:media/file46.png]]
+ [[file:media/caveman.png]]
 
  The first and last value constructors are the minimum and maximum
  possible values of =Int=. It's not actually defined like this, the
@@ -6278,7 +6278,7 @@ main = print $ bmiTell 19
 *** TODO Record syntax
 
  #+CAPTION: record
- [[file:media/file47.png]]
+ [[file:media/record.png]]
 
  OK, we've been tasked with creating a data type that describes a person.
  The info that we want to store about that person is: first name, last
@@ -6425,7 +6425,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: yeti
- [[file:media/file48.png]]
+ [[file:media/yeti.png]]
 
  The =a= here is the type parameter. And because there's a type parameter
  involved, we call =Maybe= a type constructor. Depending on what we want
@@ -6544,7 +6544,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: meekrat
- [[file:media/file49.png]]
+ [[file:media/meekrat.png]]
 
  In real life though, we'd end up using =Car String String Int= most of
  the time and so it would seem that parameterizing the =Car= type isn't
@@ -6644,7 +6644,7 @@ main = print $ bmiTell 19
 *** TODO Derived instances
 
  #+CAPTION: gob
- [[file:media/file50.png]]
+ [[file:media/gob.png]]
 
  In the [[#ch003.xhtml#typeclasses-101][Typeclasses 101]] section, we
  explained the basics of typeclasses. We explained that a typeclass is a
@@ -6918,7 +6918,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: chicken
- [[file:media/file51.png]]
+ [[file:media/chicken.png]]
 
  We've introduced the /type/ keyword. The keyword might be misleading to
  some, because we're not actually making anything new (we did that with
@@ -7180,7 +7180,7 @@ main = print $ bmiTell 19
 *** TODO Recursive data structures
 
  #+CAPTION: the fonz
- [[file:media/file52.png]]
+ [[file:media/thefonz.png]]
 
  As we've seen, a constructor in an algebraic data type can have several
  (or none at all) fields and each field must be of some concrete type.
@@ -7314,7 +7314,7 @@ main = print $ bmiTell 19
  constructors for the numeric and character types, respectively.
 
  #+CAPTION: binary search tree
- [[file:media/file53.png]]
+ [[file:media/binarytree.png]]
 
  Now, we're going to implement a /binary search tree/. If you're not
  familiar with binary search trees from languages like C, here's what
@@ -7458,7 +7458,7 @@ main = print $ bmiTell 19
 *** TODO Typeclasses 102
 
  #+CAPTION: tweet
- [[file:media/file54.png]]
+ [[file:media/trafficlight.png]]
 
  So far, we've learned about some of the standard Haskell typeclasses and
  we've seen which types are in them. We've also learned how to
@@ -7731,7 +7731,7 @@ main = print $ bmiTell 19
 *** TODO A yes-no typeclass
 
  #+CAPTION: yesno
- [[file:media/file55.png]]
+ [[file:media/yesno.png]]
 
  In JavaScript and some other weakly typed languages, you can put almost
  anything inside an if expression. For example, you can do all of the
@@ -7902,7 +7902,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: I AM FUNCTOOOOR!!!
- [[file:media/file56.png]]
+ [[file:media/functor.png]]
 
  Alright. We see that it defines one function, =fmap=, and doesn't
  provide any default implementation for it. The type of =fmap= is
@@ -8098,7 +8098,7 @@ main = print $ bmiTell 19
 *** TODO Kinds and some type-foo
 
  #+CAPTION: TYPE FOO MASTER
- [[file:media/file57.png]]
+ [[file:media/typefoo.png]]
 
  Type constructors take other types as parameters to eventually produce
  concrete types. That kind of reminds me of functions, which take values
@@ -8333,7 +8333,7 @@ main = print $ bmiTell 19
 ** TODO Input and Output
 
  #+CAPTION: poor dog
- [[file:media/file58.png]]
+ [[file:media/dognap.png]]
 
  We've mentioned that Haskell is a purely functional language. Whereas in
  imperative languages you usually get things done by giving the computer
@@ -8373,7 +8373,7 @@ main = print $ bmiTell 19
 *** TODO Hello, world!
 
  #+CAPTION: HELLO!
- [[file:media/file59.png]]
+ [[file:media/helloworld.png]]
 
  Up until now, we've always loaded our functions into GHCI to test them
  out and play with them. We've also explored the standard library
@@ -8482,7 +8482,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: luggage
- [[file:media/file60.png]]
+ [[file:media/luggage.png]]
 
  Aha, o-kay. =getLine= is an I/O action that contains a result type of
  =String=. That makes sense, because it will wait for the user to input
@@ -9102,7 +9102,7 @@ main = print $ bmiTell 19
 *** TODO Files and streams
 
  #+CAPTION: streams
- [[file:media/file61.png]]
+ [[file:media/streams.png]]
 
  =getChar= is an I/O action that reads a single character from the
  terminal. =getLine= is an I/O action that reads a line from the
@@ -9480,7 +9480,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: A FILE IN A CAKE!!!
- [[file:media/file62.png]]
+ [[file:media/file.png]]
 
  Just like our type that represents the seven possible values for the
  days of the week, this type is an enumeration that represents what we
@@ -9567,7 +9567,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: butter toast
- [[file:media/file63.png]]
+ [[file:media/edd.png]]
 
  We know the result will be an I/O action so we can just start off with a
  /do/. First we open the file and get a =handle= from it. Then, we apply
@@ -10118,7 +10118,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: fresh baked salad
- [[file:media/file65.png]]
+ [[file:media/salad.png]]
 
  To summarize our solution: we made a dispatch association that maps from
  commands to functions that take some command line arguments and return
@@ -10527,7 +10527,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: jack of diamonds
- [[file:media/file67.png]]
+ [[file:media/jackofdiamonds.png]]
 
  We make a function =askForNumber=, which takes a random number generator
  and returns an I/O action that will prompt the user for a number and
@@ -10817,7 +10817,7 @@ main = print $ bmiTell 19
 *** TODO Exceptions
 
  #+CAPTION: timberr!!!!
- [[file:media/file69.png]]
+ [[file:media/timber.png]]
 
  All languages have procedures, functions, and pieces of code that might
  fail in some way. That's just a fact of life. Different languages have
@@ -10966,7 +10966,7 @@ main = print $ bmiTell 19
  action throws an exception.
 
  #+CAPTION: non sequitor
- [[file:media/file71.png]]
+ [[file:media/puppy.png]]
 
  If you're familiar with /try-catch/ blocks in languages like Java or
  Python, the =catch= function is similar to them. The first parameter is
@@ -11220,7 +11220,7 @@ main = print $ bmiTell 19
  well-formed and that number represents the result.
 
  #+CAPTION: this expression
- [[file:media/file72.png]]
+ [[file:media/rpn.png]]
 
  Let's go over the expression =10 4 3 + 2 * -= together! First we push
  =10= on to the stack and the stack is now =10=. The next item is =4=, so
@@ -11255,7 +11255,7 @@ main = print $ bmiTell 19
  #+END_QUOTE
 
  #+CAPTION: HA HA HA
- [[file:media/file73.png]]
+ [[file:media/calculator.png]]
 
  Cool. When implementing a solution to a problem in Haskell, it's also
  good to think back on how you did it by hand and maybe try to see if you
@@ -11469,7 +11469,7 @@ main = print $ bmiTell 19
  or go forward.
 
  #+CAPTION: Heathrow - London
- [[file:media/file74.png]]
+ [[file:media/roads.png]]
 
  As you can see in the picture, the shortest path from Heathrow to London
  in this case is to start on main road B, cross over, go forward on A,
@@ -11531,7 +11531,7 @@ main = print $ bmiTell 19
  system:
 
  #+CAPTION: roads
- [[file:media/file75.png]]
+ [[file:media/roads_simple.png]]
 
  Alright, can you figure out what the shortest path to the first
  crossroads (the first blue dot on A, marked /A1/) on road A is? That's
@@ -11943,7 +11943,7 @@ main = print $ bmiTell 19
 *** TODO Functors redux
 
  #+CAPTION: frogs dont even need money
- [[file:media/file77.png]]
+ [[file:media/frogtor.png]]
 
  We've already talked about functors in
  [[#ch008.xhtml#the-functor-typeclass][their own little section]]. If you
@@ -12046,7 +12046,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: w00ooOoooOO
- [[file:media/file78.png]]
+ [[file:media/alien.png]]
 
  Just like when we =fmap= =reverse= over =Just "blah"= to get
  =Just "halb"=, we can =fmap= =reverse= over =getLine=. =getLine= is an
@@ -12502,7 +12502,7 @@ main = print $ bmiTell 19
 *** TODO Applicative functors
 
  #+CAPTION: disregard this analogy
- [[file:media/file81.png]]
+ [[file:media/present.png]]
 
  In this section, we'll take a look at applicative functors, which are
  beefed up functors, represented in Haskell by the =Applicative=
@@ -12696,7 +12696,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: whaale
- [[file:media/file82.png]]
+ [[file:media/whale.png]]
 
  What's going on here? Let's take a look, step by step. =<*>= is
  left-associative, which means that =pure (+) <*> Just 3 <*> Just 5= is
@@ -12910,7 +12910,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: ahahahah!
- [[file:media/file83.png]]
+ [[file:media/knight.png]]
 
  Since =pure= is all about putting a value in a minimal context that
  still holds it as its result, it makes sense that =pure= is just
@@ -13049,7 +13049,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: SLAP
- [[file:media/file84.png]]
+ [[file:media/jazzb.png]]
 
  Same here. We create a function that will call the function
  =\x y z -> [x,y,z]= with the eventual results from =(+3)=, =(*2)= and
@@ -13577,7 +13577,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: wow, very evil
- [[file:media/file86.png]]
+ [[file:media/krakatoa.png]]
 
  Isn't that just peachy? Now what if we wanted to make the tuple an
  instance of =Functor= in such a way that when we =fmap= a function over
@@ -13720,7 +13720,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: top of the mornin to ya!!!
- [[file:media/file87.png]]
+ [[file:media/shamrock.png]]
 
  It worked! Hmmm, why is that? Well, like we've said, when we use
  /newtype/, Haskell can internally represent the values of the new type
@@ -13907,7 +13907,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: woof dee do!!!
- [[file:media/file89.png]]
+ [[file:media/balloondog.png]]
 
  The =Monoid= type class is defined in =import Data.Monoid=. Let's take
  some time and get properly acquainted with it.
@@ -14004,7 +14004,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: smug as hell
- [[file:media/file90.png]]
+ [[file:media/smug.png]]
 
  Notice that in the last line, we had to write an explicit type
  annotation, because if we just did =mempty=, GHCi wouldn't know which
@@ -14554,7 +14554,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: find the visual pun or whatever
- [[file:media/file92.png]]
+ [[file:media/accordion.png]]
 
  We think like this: if we are provided with a function that takes an
  element of our tree and returns a monoid value, how do we reduce our
@@ -14668,7 +14668,7 @@ main = print $ bmiTell 19
  functors.
 
  #+CAPTION: more cool than u
- [[file:media/file93.png]]
+ [[file:media/smugpig.png]]
 
  When we started off with functors, we saw that it's possible to map
  functions over various data types. We saw that for this purpose, the
@@ -14761,7 +14761,7 @@ main = print $ bmiTell 19
 *** TODO Getting our feet wet with Maybe
 
  #+CAPTION: monads, grasshoppa
- [[file:media/file94.png]]
+ [[file:media/buddha.png]]
 
  Now that we have a vague idea of what monads are about, let's see if we
  can make that idea a bit less vague.
@@ -14938,7 +14938,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: this is you on monads
- [[file:media/file95.png]]
+ [[file:media/kid.png]]
 
  Let's start with the first line. It says =class Monad m where=. But
  wait, didn't we say that monads are just beefed up applicative functors?
@@ -14968,7 +14968,7 @@ main = print $ bmiTell 19
  #+END_QUOTE
 
  #+CAPTION: hmmm yaes
- [[file:media/file96.png]]
+ [[file:media/tur2.png]]
 
  The next function is =>>==, or bind. It's like function application,
  only instead of taking a normal value and feeding it to a normal
@@ -15032,7 +15032,7 @@ main = print $ bmiTell 19
 *** TODO Walk the line
 
  #+CAPTION: pierre
- [[file:media/file97.png]]
+ [[file:media/pierre.png]]
 
  Now that we know how to feed a =Maybe a= value to a function of type
  =a -> Maybe b= while taking into account the context of possible
@@ -15262,7 +15262,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: iama banana
- [[file:media/file98.png]]
+ [[file:media/banana.png]]
 
  Awesome. The final result represents failure, which is what we expected.
  Let's see how this result was obtained. First, =return= puts =(0,0)=
@@ -15366,7 +15366,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: john joe glanton
- [[file:media/file99.png]]
+ [[file:media/centaur.png]]
 
  We land a bird on the left and then we examine the possibility of
  failure and the possibility of success. In the case of failure, we
@@ -15474,7 +15474,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: 90s owl
- [[file:media/file100.png]]
+ [[file:media/owld.png]]
 
  It would seem as though we've gained the ability to temporarily extract
  things from =Maybe= values without having to check if the =Maybe= values
@@ -15670,7 +15670,7 @@ main = print $ bmiTell 19
 *** TODO The list monad
 
  #+CAPTION: dead cat
- [[file:media/file101.png]]
+ [[file:media/deadcat.png]]
 
  So far, we've seen how =Maybe= values can be viewed as values with a
  failure context and how we can incorporate failure handling into our
@@ -15780,7 +15780,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: concatmap
- [[file:media/file102.png]]
+ [[file:media/concatmap.png]]
 
  The list =[1,2]= gets bound to =n= and =['a','b']= gets bound to =ch=.
  Then, we do =return (n,ch)= (or =[(n,ch)]=), which means taking a pair
@@ -15958,7 +15958,7 @@ main = print $ bmiTell 19
  he's in and the second number will determine the row.
 
  #+CAPTION: hee haw im a horse
- [[file:media/file103.png]]
+ [[file:media/chess.png]]
 
  Let's make a type synonym for the knight's current position on the chess
  board:
@@ -16080,7 +16080,7 @@ main = print $ bmiTell 19
 *** TODO Monad laws
 
  #+CAPTION: the court finds you guilty of peeing all over everything
- [[file:media/file104.png]]
+ [[file:media/judgedog.png]]
 
  Just like applicative functors, and functors before them, monads come
  with a few laws that all monad instances must abide by. Just because
@@ -16877,7 +16877,7 @@ main = print $ bmiTell 19
 **** Difference lists
 
  #+CAPTION: cactuses
- [[file:media/file108.png]]
+ [[file:media/cactus.png]]
 
  Because lists can sometimes be inefficient when repeatedly appended in
  this manner, it's best to use a data structure that always supports
@@ -17053,7 +17053,7 @@ main = print $ bmiTell 19
 *** TODO Reader? Ugh, not this joke again.
 
  #+CAPTION: bang youre dead
- [[file:media/file109.png]]
+ [[file:media/revolver.png]]
 
  In the [[#ch011.xhtml#functors-applicative-functors-and-monoids][chapter
  about applicatives]], we saw that the function type, =(->) r= is an
@@ -17180,7 +17180,7 @@ main = print $ bmiTell 19
 *** TODO Tasteful stateful computations
 
  #+CAPTION: don't jest with texas
- [[file:media/file110.png]]
+ [[file:media/texas.png]]
 
  Haskell is a pure language and because of that, our programs are made of
  functions that can't change any global state or variables, they can only
@@ -17369,7 +17369,7 @@ main = print $ bmiTell 19
  certain value as the result and keeps the state unchanged.
 
  #+CAPTION: im a cop
- [[file:media/file111.png]]
+ [[file:media/badge.png]]
 
  What about =>>==? Well, the result of feeding a stateful computation to
  a function with =>>== has to be a stateful computation, right? So we
@@ -17719,7 +17719,7 @@ main = print $ bmiTell 19
 **** liftM and friends
 
  #+CAPTION: im a cop too
- [[file:media/file112.png]]
+ [[file:media/wolf.png]]
 
  When we started our journey to the top of Monad Mountain, we first
  looked at functors, which are for things that can be mapped over. Then,
@@ -17997,7 +17997,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: im a cop too as well also
- [[file:media/file113.png]]
+ [[file:media/tipi.png]]
 
  Perhaps the most interesting thing about =join= is that for every monad,
  feeding a monadic value to a function with =>>== is the same thing as
@@ -18222,7 +18222,7 @@ main = print $ bmiTell 19
 **** Making a safe RPN calculator
 
  #+CAPTION: i've found yellow!
- [[file:media/file114.png]]
+ [[file:media/miner.png]]
 
  When we were solving the problem of
  [[#ch010.xhtml#reverse-polish-notation-calculator][implementing a RPN
@@ -18469,7 +18469,7 @@ main = print $ bmiTell 19
 *** TODO Making monads
 
  #+CAPTION: kewl
- [[file:media/file115.png]]
+ [[file:media/spearhead.png]]
 
  In this section, we're going to look at an example of how a type gets
  made, identified as a monad and then given the appropriate =Monad=
@@ -18591,7 +18591,7 @@ main = print $ bmiTell 19
  scenario:
 
  #+CAPTION: probs
- [[file:media/file116.png]]
+ [[file:media/prob.png]]
 
  What are the chances for each of these letters to occur? If we were to
  draw this as just four boxes, each with a probability, what would those
@@ -18641,7 +18641,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: ride em cowboy
- [[file:media/file117.png]]
+ [[file:media/ride.png]]
 
  Because we already did all the hard work, the instance is very simple.
  We also defined the =fail= function, which is the same as it is for
@@ -18724,7 +18724,7 @@ main = print $ bmiTell 19
 ** TODO Zippers
 
  #+CAPTION: hi im chet
- [[file:media/file118.png]]
+ [[file:media/60sdude.png]]
 
  While Haskell's purity comes with a whole bunch of benefits, it makes us
  tackle some problems differently than we would in impure languages.
@@ -18795,7 +18795,7 @@ main = print $ bmiTell 19
  And here's this tree represented graphically:
 
  #+CAPTION: polly says her back hurts
- [[file:media/file119.png]]
+ [[file:media/pollywantsa.png]]
 
  Notice that =W= in the tree there? Say we want to change it into a =P=.
  How would we go about doing that? Well, one way would be to pattern
@@ -18886,7 +18886,7 @@ main = print $ bmiTell 19
 *** TODO A trail of breadcrumbs
 
  #+CAPTION: whoop dee doo
- [[file:media/file120.png]]
+ [[file:media/bread.png]]
 
  Okay, so for focusing on a sub-tree, we want something better than just
  a list of directions that we always follow from the root of our tree.
@@ -18931,7 +18931,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: almostthere
- [[file:media/file121.png]]
+ [[file:media/almostzipper.png]]
 
  Okay, so now we have a tree that has ='W'= in its root and ='C'= in the
  root of its left sub-tree and ='R'= in the root of its right sub-tree.
@@ -19047,7 +19047,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: asstronaut
- [[file:media/file122.png]]
+ [[file:media/asstronaut.png]]
 
  We're focusing on the tree =t= and we check what the latest =Crumb= is.
  If it's a =LeftCrumb=, then we construct a new tree where our tree =t=
@@ -19191,7 +19191,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: the best damn thing
- [[file:media/file123.png]]
+ [[file:media/picard.png]]
 
  Contrast this with our definition of our binary tree and it's easy to
  see how lists can be viewed as trees where each node has only one
@@ -19334,7 +19334,7 @@ main = print $ bmiTell 19
 **** A zipper for our file system
 
  #+CAPTION: spongedisk
- [[file:media/file124.png]]
+ [[file:media/spongedisk.png]]
 
  Now that we have a file system, all we need is a zipper so we can zip
  and zoom around it and add, modify and remove files as well as folders.
@@ -19414,7 +19414,7 @@ main = print $ bmiTell 19
  it just looks at the current folder.
 
  #+CAPTION: wow cool great
- [[file:media/file125.png]]
+ [[file:media/cool.png]]
 
  First we use =break= to break the list of items in a folder into those
  that precede the file that we're searching for and those that come after
@@ -19527,7 +19527,7 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  #+CAPTION: falling for you
- [[file:media/file126.png]]
+ [[file:media/bigtree.png]]
 
  But what if the tree we're stepping off from is an empty tree? That is,
  what if it's not a =Node=, but an =Empty=? In this case, we'd get a
