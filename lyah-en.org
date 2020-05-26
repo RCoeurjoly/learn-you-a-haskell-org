@@ -1,14 +1,14 @@
 #+TODO: TODO_NEXT(n) TODO(t) WAIT(w!) | DONE(d) CANCELED(c)
 [[file:media/lyah.jpg]]
 
-* TODO Learn You a Haskell for Great Good! [2%]
+* TODO Learn You a Haskell for Great Good! [4%]
   :PROPERTIES:
   :COOKIE_DATA: todo recursive
   :END:
 ** DONE Introduction
    CLOSED: [2020-04-28 Tue 22:48]
 
- 
+
 *** About this tutorial
 
  Welcome to /Learn You a Haskell for Great Good/! If you're reading this,
@@ -50,7 +50,7 @@
  much like learning to program for the first time --- it's fun! It forces
  you to think differently, which brings us to the next section ...
 
- 
+
 *** So what's Haskell?
 
  [[file:media/fx.png]] Haskell is a /purely functional programming
@@ -125,7 +125,7 @@
  design a kick-ass language. In 2003 the Haskell Report was published,
  which defines a stable version of the language.
 
- 
+
 *** What you need to dive in
 
  A text editor and a Haskell compiler. You probably already have your
@@ -153,9 +153,9 @@
  changing the .hs file, loading it up again and so on. This is also what
  we'll be doing here.
 
- 
 
- 
+
+
 ** TODO_NEXT Starting Out
 *** DONE Ready, set, go!
     CLOSED: [2020-04-28 Tue 19:31]
@@ -368,14 +368,14 @@ succ 9 + max 5 4 + 1
  some number and then we call =bar= again with that number. In C, that
  would be something like =bar(bar(3))=.
 
- 
+
 *** TODO_NEXT Baby's first functions
 
  In the previous section we got a basic feel for calling functions. Now
  let's try making our own! Open up your favorite text editor and punch in
  this function that takes a number and multiplies it by two.
 
- 
+
 
  #+begin_src haskell :results output
 doubleMe x = x + x
@@ -410,7 +410,8 @@ doubleMe 8
  works on any number. Let's make a function that takes two numbers and
  multiplies each by two and then adds them together.
 
- 
+
+
  #+BEGIN_EXAMPLE
     doubleUs x y = x*2 + y*2
  #+END_EXAMPLE
@@ -432,7 +433,7 @@ doubleMe 8
  As expected, you can call your own functions from other functions that
  you made. With that in mind, we could redefine =doubleUs= like this:
 
- 
+
  #+BEGIN_EXAMPLE
     doubleUs x y = doubleMe x + doubleMe y
  #+END_EXAMPLE
@@ -453,7 +454,7 @@ doubleMe 8
  only if that number is smaller than or equal to 100 because numbers
  bigger than 100 are big enough as it is!
 
- 
+
  #+BEGIN_EXAMPLE
     doubleSmallNumber x = if x > 100
                             then x
@@ -479,7 +480,7 @@ doubleMe 8
  one to every number that's produced in our previous function, we could
  have written its body like this.
 
- 
+
  #+BEGIN_EXAMPLE
     doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
  #+END_EXAMPLE
@@ -492,7 +493,7 @@ doubleMe 8
  slightly modified version of a function or a variable. Because ='= is a
  valid character in functions, we can make a function like this.
 
- 
+
  #+BEGIN_EXAMPLE
     conanO'Brien = "It's a-me, Conan O'Brien!"
  #+END_EXAMPLE
@@ -506,7 +507,7 @@ doubleMe 8
  we've defined them, =conanO'Brien= and the string
  ="It's a-me, Conan O'Brien!"= can be used interchangeably.
 
- 
+
 *** TODO An intro to lists
 
  [[file:media/list.png]] Much like shopping lists in the real world,
@@ -527,11 +528,15 @@ doubleMe 8
    a script and then loading it.
  #+END_QUOTE
 
- #+BEGIN_EXAMPLE
-    ghci> let lostNumbers = [4,8,15,16,23,42]
-    ghci> lostNumbers
-    [4,8,15,16,23,42]
- #+END_EXAMPLE
+
+#+begin_src haskell
+let lostNumbers = [4,8,15,16,23,42]
+lostNumbers
+#+end_src
+
+#+RESULTS:
+| 4 | 8 | 15 | 16 | 23 | 42 |
+
 
  As you can see, lists are denoted by square brackets and the values in
  the lists are separated by commas. If we tried a list like
@@ -545,14 +550,17 @@ doubleMe 8
  A common task is putting two lists together. This is done by using the
  =++= operator.
 
- #+BEGIN_EXAMPLE
-    ghci> [1,2,3,4] ++ [9,10,11,12]
-    [1,2,3,4,9,10,11,12]
-    ghci> "hello" ++ " " ++ "world"
-    "hello world"
-    ghci> ['w','o'] ++ ['o','t']
-    "woot"
- #+END_EXAMPLE
+#+begin_src haskell :results output
+[1,2,3,4] ++ [9,10,11,12]
+"hello" ++ " " ++ "world"
+['w','o'] ++ ['o','t']
+#+end_src
+
+#+RESULTS:
+: [1,2,3,4,9,10,11,12]
+: hello world
+: woot
+
 
  Watch out when repeatedly using the =++= operator on long strings. When
  you put together two lists (even if you append a singleton list to a
@@ -563,12 +571,15 @@ doubleMe 8
  while. However, putting something at the beginning of a list using the
  =:= operator (also called the cons operator) is instantaneous.
 
- #+BEGIN_EXAMPLE
-    ghci> 'A':" SMALL CAT"
-    "A SMALL CAT"
-    ghci> 5:[1,2,3,4,5]
-    [5,1,2,3,4,5]
- #+END_EXAMPLE
+#+begin_src haskell :results output
+'A':" SMALL CAT"
+5:[1,2,3,4,5]
+#+end_src
+
+#+RESULTS:
+: A SMALL CAT
+: [5,1,2,3,4,5]
+
 
  Notice how =:= takes a number and a list of numbers or a character and a
  list of characters, whereas =++= takes two lists. Even if you're adding
@@ -588,12 +599,15 @@ doubleMe 8
  If you want to get an element out of a list by index, use =!!=. The
  indices start at 0.
 
- #+BEGIN_EXAMPLE
-    ghci> "Steve Buscemi" !! 6
-    'B'
-    ghci> [9.4,33.2,96.2,11.2,23.25] !! 1
-    33.2
- #+END_EXAMPLE
+#+begin_src haskell :results output
+"Steve Buscemi" !! 6
+[9.4,33.2,96.2,11.2,23.25] !! 1
+#+end_src
+
+#+RESULTS:
+: 'B'
+: 33.2
+
 
  But if you try to get the sixth element from a list that only has four
  elements, you'll get an error so be careful!
@@ -601,17 +615,21 @@ doubleMe 8
  Lists can also contain lists. They can also contain lists that contain
  lists that contain lists ...
 
- #+BEGIN_EXAMPLE
-    ghci> let b = [[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]
-    ghci> b
-    [[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]
-    ghci> b ++ [[1,1,1,1]]
-    [[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3],[1,1,1,1]]
-    ghci> [6,6,6]:b
-    [[6,6,6],[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]
-    ghci> b !! 2
-    [1,2,2,3,4]
- #+END_EXAMPLE
+#+begin_src haskell :results output
+let b = [[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]
+b
+b ++ [[1,1,1,1]]
+[6,6,6]:b
+b !! 2
+#+end_src
+
+#+RESULTS:
+:
+: [[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]
+: [[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3],[1,1,1,1]]
+: [[6,6,6],[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]
+: [1,2,2,3,4]
+
 
  The lists within a list can be of different lengths but they can't be of
  different types. Just like you can't have a list that has some
@@ -782,8 +800,9 @@ doubleMe 8
  Those were a few basic functions that operate on lists. We'll take a
  look at more list functions [[#ch002.xhtml#data-list][later]]
 
- 
-*** TODO Texas ranges
+
+*** DONE Texas ranges
+    CLOSED: [2020-05-26 Tue 12:17]
 
  [[file:media/cowboy.png]] What if we want a list of all numbers between 1
  and 20? Sure, we could just type them all out but obviously that's not a
@@ -895,9 +914,9 @@ replicate 3 10
  : [10,10,10]
 
 
- 
 
- 
+
+
 *** TODO I'm a list comprehension
 
  [[file:media/kermit.png]] If you've ever taken a course in mathematics,
@@ -970,7 +989,7 @@ boomBangs xs = [ if x < 10 then "BOOM!" else "BANG!" | x <- xs, odd x]
  returns =True= on an odd number and =False= on an even one. The element
  is included in the list only if all the predicates evaluate to =True=.
 
- 
+
 
  #+begin_src haskell :results output :noweb yes
 <<boomBangs>>
@@ -1047,7 +1066,7 @@ let adjectives = ["lazy","grouchy","scheming"]
  I know! Let's write our own version of =length=! We'll call it
  =length'=.
 
- 
+
 
  #+begin_src haskell :results output
 length' xs = sum [ 1 | _ <- xs]
@@ -1423,7 +1442,7 @@ Passed:
  comprehensions to process and produce strings. Here's a function that
  takes a string and removes everything except uppercase letters from it.
 
- 
+
  #+BEGIN_EXAMPLE
     removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
  #+END_EXAMPLE
@@ -1453,7 +1472,7 @@ Passed:
  in GHCI, it's better to split longer list comprehensions across multiple
  lines, especially if they're nested.
 
- 
+
 *** TODO Tuples
 
  #+CAPTION: tuples
@@ -1614,9 +1633,9 @@ Passed:
  transformations to those solutions and filter them until you get the
  right ones.
 
- 
 
- 
+
+
 ** TODO Types and Typeclasses
 *** TODO Believe the type
 
@@ -1646,6 +1665,19 @@ Passed:
  Now we'll use GHCI to examine the types of some expressions. We'll do
  that by using the =:t= command which, followed by any valid expression,
  tells us its type. Let's give it a whirl.
+
+#+begin_src haskell
+:t 'a'
+:t True
+:t "HELLO!"
+:t (True, 'a')
+:t 4 == 5
+#+end_src
+
+#+RESULTS:
+: 4 == 5 :: Bool
+
+
 
  #+BEGIN_EXAMPLE
     ghci> :t 'a'
@@ -1681,7 +1713,7 @@ Passed:
  so that only caps remain? Here's how it looks like with a type
  declaration.
 
- 
+
  #+BEGIN_EXAMPLE
     removeNonUppercase :: [Char] -> [Char]
     removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
@@ -1698,7 +1730,7 @@ Passed:
  parameters? Here's a simple function that takes three integers and adds
  them together:
 
- 
+
  #+BEGIN_EXAMPLE
     addThree :: Int -> Int -> Int -> Int
     addThree x y z = x + y + z
@@ -1727,7 +1759,7 @@ Passed:
  it's not bounded so it can be used to represent really really big
  numbers. I mean like really big. =Int=, however, is more efficient.
 
- 
+
  #+BEGIN_EXAMPLE
     factorial :: Integer -> Integer
     factorial n = product [1..n]
@@ -1740,7 +1772,7 @@ Passed:
 
  =Float= is a real floating point with single precision.
 
- 
+
  #+BEGIN_EXAMPLE
     circumference :: Float -> Float
     circumference r = 2 * pi * r
@@ -1753,7 +1785,7 @@ Passed:
 
  =Double= is a real floating point with double the precision!
 
- 
+
  #+BEGIN_EXAMPLE
     circumference' :: Double -> Double
     circumference' r = 2 * pi * r
@@ -1776,7 +1808,7 @@ Passed:
  the empty tuple =()= is also a type which can only have a single value:
  =()=
 
- 
+
 *** TODO Type variables
 
  What do you think is the type of the =head= function? Because =head=
@@ -1817,9 +1849,9 @@ Passed:
  to be different types. It just states that the first component's type
  and the return value's type are the same.
 
- 
 
- 
+
+
 *** TODO Typeclasses 101
 
  #+CAPTION: class
@@ -2099,9 +2131,9 @@ Passed:
  signature. That's completely valid and as you can see, the class
  constraints are separated by commas inside the parentheses.
 
- 
 
- 
+
+
 ** TODO Syntax in Functions
 *** TODO Pattern matching
 
@@ -2120,7 +2152,7 @@ Passed:
  characters, lists, tuples, etc. Let's make a really trivial function
  that checks if the number we supplied to it is a seven or not.
 
- 
+
  #+BEGIN_EXAMPLE
     lucky :: (Integral a) => a -> String
     lucky 7 = "LUCKY NUMBER SEVEN!"
@@ -2137,7 +2169,7 @@ Passed:
  any other number? Without pattern matching, we'd have to make a pretty
  convoluted if then else tree. However, with it:
 
- 
+
  #+BEGIN_EXAMPLE
     sayMe :: (Integral a) => a -> String
     sayMe 1 = "One!"
@@ -2161,7 +2193,7 @@ Passed:
  multiplied by the factorial of its predecessor. Here's how that looks
  like translated in Haskell terms.
 
- 
+
  #+BEGIN_EXAMPLE
     factorial :: (Integral a) => a -> a
     factorial 0 = 1
@@ -2185,7 +2217,7 @@ Passed:
 
  Pattern matching can also fail. If we define a function like this:
 
- 
+
  #+BEGIN_EXAMPLE
     charName :: Char -> String
     charName 'a' = "Albert"
@@ -2215,7 +2247,7 @@ Passed:
  x components separately and then their y components separately. Here's
  how we would have done it if we didn't know about pattern matching:
 
- 
+
  #+BEGIN_EXAMPLE
     addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)
     addVectors a b = (fst a + fst b, snd a + snd b)
@@ -2224,7 +2256,7 @@ Passed:
  Well, that works, but there's a better way to do it. Let's modify the
  function so that it uses pattern matching.
 
- 
+
  #+BEGIN_EXAMPLE
     addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)
     addVectors (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
@@ -2239,7 +2271,7 @@ Passed:
  Well, there are no provided functions that do that but we can make our
  own.
 
- 
+
  #+BEGIN_EXAMPLE
     first :: (a, b, c) -> a
     first (x, _, _) = x
@@ -2286,7 +2318,7 @@ Passed:
  Now that we know how to pattern match against list, let's make our own
  implementation of the =head= function.
 
- 
+
  #+BEGIN_EXAMPLE
     head' :: [a] -> a
     head' [] = error "Can't call head on an empty list, dummy!"
@@ -2313,7 +2345,7 @@ Passed:
  Let's make a trivial function that tells us some of the first elements
  of the list in (in)convenient English form.
 
- 
+
  #+BEGIN_EXAMPLE
     tell :: (Show a) => [a] -> String
     tell [] = "The list is empty"
@@ -2333,7 +2365,7 @@ Passed:
  comprehension. Now we'll do it by using pattern matching and a little
  recursion:
 
- 
+
  #+BEGIN_EXAMPLE
     length' :: (Num b) => [a] -> b
     length' [] = 0
@@ -2400,9 +2432,9 @@ Passed:
  make sense to match stuff against =(xs ++ [x,y,z])= or just
  =(xs ++ [x])=, but because of the nature of lists, you can't do that.
 
- 
 
- 
+
+
 *** TODO Guards, guards!
 
  #+CAPTION: guards
@@ -2545,7 +2577,7 @@ main = print $ bmiTell 19
    way.
  #+END_QUOTE
 
- 
+
 *** TODO Where!?
 
  In the previous section, we defined a BMI calculator function and
@@ -2655,9 +2687,9 @@ main = print $ bmiTell 19
  to give those functions helper functions as well, each with its own
  /where/ clause.
 
- 
 
- 
+
+
 *** TODO Let it be
 
  Very similar to where bindings are let bindings. Where bindings are a
@@ -2783,7 +2815,7 @@ main = print $ bmiTell 19
  function they're being used in. That way, the function body is closer to
  its name and type declaration and to some that's more readable.
 
- 
+
 *** TODO Case expressions
 
  #+CAPTION: case
@@ -2856,9 +2888,9 @@ main = print $ bmiTell 19
               what xs = "a longer list."
  #+END_EXAMPLE
 
- 
 
- 
+
+
 ** TODO Recursion
 *** TODO Hello recursion!
 
@@ -2897,7 +2929,7 @@ main = print $ bmiTell 19
  for loops in Haskell and instead we many times have to use recursion to
  declare what something is.
 
- 
+
 *** TODO Maximum awesome
 
  The =maximum= function takes a list of things that can be ordered (
@@ -2973,7 +3005,7 @@ main = print $ bmiTell 19
  #+CAPTION: max
  [[file:media/maxs.png]]
 
- 
+
 *** TODO A few more recursive functions
 
  Now that we know how to generally think recursively, let's implement a
@@ -3108,7 +3140,7 @@ main = print $ bmiTell 19
  Pretty simple and expected. If the head isn't the element then we check
  the tail. If we reach an empty list, the result is =False=.
 
- 
+
 *** TODO Quick, sort!
 
  We have a list of items that can be sorted. Their type is an instance of
@@ -3183,7 +3215,7 @@ main = print $ bmiTell 19
  pivot are dark green. The yellowish gradient thing represents an
  application of quicksort.
 
- 
+
 *** TODO Thinking recursively
 
  We did quite a bit of recursion so far and as you've probably noticed,
@@ -3225,9 +3257,9 @@ main = print $ bmiTell 19
  are usually broken into a head and a tail via pattern matching) and on
  which part you'll use the recursive call.
 
- 
 
- 
+
+
 ** TODO Higher order functions
 
  #+CAPTION: sun
@@ -3242,9 +3274,9 @@ main = print $ bmiTell 19
  them, higher order functions are indispensable. They're a really
  powerful way of solving problems and thinking about programs.
 
- 
 
- 
+
+
 *** TODO Curried functions
 
  Every function in Haskell officially only takes one parameter. So how is
@@ -3397,7 +3429,7 @@ main = print $ bmiTell 19
  representation of =2= is just the string ="2"=, which then gets printed
  to our screen.
 
- 
+
 *** TODO Some higher-orderism is in order
 
  Functions can take functions as parameters and also return functions. To
@@ -3555,7 +3587,7 @@ main = print $ bmiTell 19
     [5,4,3,2,1]
  #+END_EXAMPLE
 
- 
+
 *** TODO Maps and filters
 
  =map= takes a function and a list and applies that function to every
@@ -3808,7 +3840,7 @@ main = print $ bmiTell 19
  that's equivalent to =(4*)=. And then, we just apply =5= to that
  function. So that's like writing =(4*) 5= or just =4 * 5=.
 
- 
+
 *** TODO Lambdas
 
  #+CAPTION: lambda
@@ -3903,9 +3935,9 @@ main = print $ bmiTell 19
  explicit that your function is mainly meant to be partially applied and
  passed on to a function as a parameter.
 
- 
 
- 
+
+
 *** TODO Only folds and horses
 
  #+CAPTION: folded bird
@@ -4168,7 +4200,7 @@ main = print $ bmiTell 19
  =filter= doesn't, so we use =takeWhile= to cut the scanlist off at the
  first occurence of a sum greater than 1000.
 
- 
+
 *** TODO Function application with $
 
  Alright, next up, we'll take a look at the =$= function, also called
@@ -4217,9 +4249,9 @@ main = print $ bmiTell 19
     [7.0,30.0,9.0,1.7320508075688772]
  #+END_EXAMPLE
 
- 
 
- 
+
+
 *** TODO Function composition
 
  In mathematics, function composition is defined like this:
@@ -4376,9 +4408,9 @@ main = print $ bmiTell 19
  It wouldn't win any code golf competition, but someone reading the
  function will probably find it easier to read than a composition chain.
 
- 
 
- 
+
+
 ** TODO Modules
 *** TODO Loading modules
 
@@ -4505,9 +4537,9 @@ main = print $ bmiTell 19
  search engine, you can search by name, module name or even type
  signature.
 
- 
 
- 
+
+
 *** TODO Data.List
 
  The =Data.List= module is all about lists, obviously. It provides some
@@ -5148,7 +5180,7 @@ main = print $ bmiTell 19
  =(==) `on` something= and when you're dealing with /By/ functions that
  take an ordering function, you usually do =compare `on` something=.
 
- 
+
 *** TODO Data.Char
 
  #+CAPTION: lego char
@@ -5367,7 +5399,7 @@ main = print $ bmiTell 19
     "This is a sentence"
  #+END_EXAMPLE
 
- 
+
 *** TODO Data.Map
 
  Association lists (also called dictionaries) are lists that are used to
@@ -5684,7 +5716,7 @@ main = print $ bmiTell 19
  list of functions in the
  [[http://www.haskell.org/ghc/docs/latest/html/libraries/containers/Data-Map.html#v%3Aassocs][documentation]].
 
- 
+
 *** TODO Data.Set
 
  #+CAPTION: legosets
@@ -5823,7 +5855,7 @@ main = print $ bmiTell 19
  =nub= preserves the ordering of the list's elements, while =setNub= does
  not.
 
- 
+
 *** TODO Making our own modules
 
  #+CAPTION: making modules
@@ -6023,9 +6055,9 @@ main = print $ bmiTell 19
  just import your module the next time you're writing a program that
  requires some of the same functionality.
 
- 
 
- 
+
+
 ** TODO Making Our Own Types and Typeclasses
 
  In the previous chapters, we covered some existing Haskell types and
@@ -6274,7 +6306,7 @@ main = print $ bmiTell 19
  abstract in such a way that we hide their implementation. Also, whoever
  uses our module can't pattern match against the value constructors.
 
- 
+
 *** TODO Record syntax
 
  #+CAPTION: record
@@ -6408,7 +6440,7 @@ main = print $ bmiTell 19
  types, it wasn't so obvious and we greatly benefited from using record
  syntax.
 
- 
+
 *** TODO Type parameters
 
  A value constructor can take some values parameters and then produce a
@@ -6640,7 +6672,7 @@ main = print $ bmiTell 19
     Vector 148 666 222
  #+END_EXAMPLE
 
- 
+
 *** TODO Derived instances
 
  #+CAPTION: gob
@@ -6901,9 +6933,9 @@ main = print $ bmiTell 19
 
  That's pretty awesome.
 
- 
 
- 
+
+
 *** TODO Type synonyms
 
  Previously, we mentioned that when writing types, the =[Char]= and
@@ -7174,9 +7206,9 @@ main = print $ bmiTell 19
  wouldn't know why we couldn't get the code. But now, we have information
  about the failure in our result type.
 
- 
 
- 
+
+
 *** TODO Recursive data structures
 
  #+CAPTION: the fonz
@@ -7454,7 +7486,7 @@ main = print $ bmiTell 19
  powerful concept in Haskell. We can use them to make anything from
  boolean values and weekday enumerations to binary search trees and more!
 
- 
+
 *** TODO Typeclasses 102
 
  #+CAPTION: tweet
@@ -7727,7 +7759,7 @@ main = print $ bmiTell 19
  you all the typeclasses that =Maybe= is an instance of. Also =:info= can
  show you the type declaration of a function. I think that's pretty cool.
 
- 
+
 *** TODO A yes-no typeclass
 
  #+CAPTION: yesno
@@ -7876,9 +7908,9 @@ main = print $ bmiTell 19
     "NO!"
  #+END_EXAMPLE
 
- 
 
- 
+
+
 *** TODO The Functor typeclass
 
  So far, we've encountered a lot of the typeclasses in the standard
@@ -8094,7 +8126,7 @@ main = print $ bmiTell 19
    detail in one of the next chapters.
  #+END_QUOTE
 
- 
+
 *** TODO Kinds and some type-foo
 
  #+CAPTION: TYPE FOO MASTER
@@ -8327,9 +8359,9 @@ main = print $ bmiTell 19
  read on, but if you understand how kinds work, chances are that you have
  a very solid grasp of Haskell's type system.
 
- 
 
- 
+
+
 ** TODO Input and Output
 
  #+CAPTION: poor dog
@@ -9098,7 +9130,7 @@ main = print $ bmiTell 19
  a string and returns an I/O action. That I/O action will, when
  performed, print beautiful poetry to your terminal.
 
- 
+
 *** TODO Files and streams
 
  #+CAPTION: streams
@@ -9862,7 +9894,7 @@ main = print $ bmiTell 19
     Take salad out of the oven
  #+END_EXAMPLE
 
- 
+
 *** TODO Command line arguments
 
  #+CAPTION: COMMAND LINE ARGUMENTS!!! ARGH
@@ -10171,9 +10203,9 @@ main = print $ bmiTell 19
  there is erroneous input, perform the error reporting I/O action.
  Another way is to use exceptions, which we will meet soon.
 
- 
 
- 
+
+
 *** TODO Randomness
 
  #+CAPTION: this picture is the ultimate source of randomness and
@@ -10605,7 +10637,7 @@ main = print $ bmiTell 19
  but I like the first one more since it does less stuff in =main= and
  also provides us with a function that we can reuse easily.
 
- 
+
 *** TODO Bytestrings
 
  #+CAPTION: like normal string, only they byte ... what a pedestrian pun
@@ -10813,7 +10845,7 @@ main = print $ bmiTell 19
  write programs by using normal strings and then convert them to use
  bytestrings if the performance is not satisfactory.
 
- 
+
 *** TODO Exceptions
 
  #+CAPTION: timberr!!!!
@@ -11181,9 +11213,9 @@ main = print $ bmiTell 19
  result that they yield when performed is of type =Either a b=, meaning
  it's either =Left a= or =Right b=.
 
- 
 
- 
+
+
 ** TODO Functionally Solving Problems
 
  In this chapter, we'll take a look at a few interesting problems and how
@@ -11193,7 +11225,8 @@ main = print $ bmiTell 19
  Each section will present a different problem. First we'll describe the
  problem, then we'll try and find out what the best (or least worst) way
  of solving it is.
-*** TODO Reverse Polish notation calculator
+*** DONE Reverse Polish notation calculator
+    CLOSED: [2020-05-26 Tue 20:22]
 
  Usually when we write mathematical expressions in school, we write them
  in an infix manner. For instance, we write =10 - (4 + 3) * 2=. =+=, =*=
@@ -11203,8 +11236,7 @@ main = print $ bmiTell 19
  expression. The downside to it is that we have to use parentheses to
  denote precedence.
 
- [[http://en.wikipedia.org/wiki/Reverse_Polish_notation][Reverse Polish
- notation]] is another way of writing down mathematical expressions.
+ [[http://en.wikipedia.org/wiki/Reverse_Polish_notation][Reverse Polish notation]] is another way of writing down mathematical expressions.
  Initially it looks a bit weird, but it's actually pretty easy to
  understand and use because there's no need for parentheses and it's very
  easy to punch into a calculator. While most modern calculators use infix
@@ -11328,14 +11360,18 @@ main = print $ bmiTell 19
  the top items of a stack and to pattern match against operators like
  ="*"= and ="-"=.
 
- #+BEGIN_EXAMPLE
-    solveRPN :: (Num a, Read a) => String -> a
-    solveRPN = head . foldl foldingFunction [] . words
-        where   foldingFunction (x:y:ys) "*" = (x * y):ys
-                foldingFunction (x:y:ys) "+" = (x + y):ys
-                foldingFunction (x:y:ys) "-" = (y - x):ys
-                foldingFunction xs numberString = read numberString:xs
- #+END_EXAMPLE
+
+#+NAME: solveRPN
+#+begin_src haskell :compile yes :noweb yes
+import Data.List
+
+solveRPN :: (Num a, Read a) => String -> a
+solveRPN = head . foldl foldingFunction [] . words
+  where   foldingFunction (x:y:ys) "*" = (x * y):ys
+          foldingFunction (x:y:ys) "+" = (x + y):ys
+          foldingFunction (x:y:ys) "-" = (y - x):ys
+          foldingFunction xs numberString = read numberString:xs
+ #+end_src
 
  We laid this out as four patterns. The patterns will be tried from top
  to bottom. First the folding function will see if the current item is
@@ -11372,20 +11408,26 @@ main = print $ bmiTell 19
 
  Let's play around with our function:
 
- #+BEGIN_EXAMPLE
-    ghci> solveRPN "10 4 3 + 2 * -"
-    -4
-    ghci> solveRPN "2 3 +"
-    5
-    ghci> solveRPN "90 34 12 33 55 66 + * - +"
-    -3947
-    ghci> solveRPN "90 34 12 33 55 66 + * - + -"
-    4037
-    ghci> solveRPN "90 34 12 33 55 66 + * - + -"
-    4037
-    ghci> solveRPN "90 3 -"
-    87
- #+END_EXAMPLE
+
+#+begin_src haskell :compile yes :noweb yes
+<<solveRPN>>
+
+main = do
+  print $ solveRPN "10 4 3 + 2 * -"
+  print $ solveRPN "2 3 +"
+  print $ solveRPN "90 34 12 33 55 66 + * - +"
+  print $ solveRPN "90 34 12 33 55 66 + * - + -"
+  print $ solveRPN "90 34 12 33 55 66 + * - + -"
+  print $ solveRPN "90 3 -"
+#+end_src
+
+#+RESULTS:
+|    -4 |
+|     5 |
+| -3947 |
+|  4037 |
+|  4037 |
+|    87 |
 
  Cool, it works! One nice thing about this function is that it can be
  easily modified to support various other operators. They don't even have
@@ -11398,21 +11440,22 @@ main = print $ bmiTell 19
  Let's modify our function to take a few more operators. For simplicity's
  sake, we'll change its type declaration so that it returns a number of
  type =Float=.
+#+NAME: newSolveRPN
+#+begin_src haskell :compile yes
+import Data.List
 
- #+BEGIN_EXAMPLE
-    import Data.List
+solveRPN :: String -> Float
+solveRPN = head . foldl foldingFunction [] . words
+  where   foldingFunction (x:y:ys) "*" = (x * y):ys
+          foldingFunction (x:y:ys) "+" = (x + y):ys
+          foldingFunction (x:y:ys) "-" = (y - x):ys
+          foldingFunction (x:y:ys) "/" = (y / x):ys
+          foldingFunction (x:y:ys) "^" = (y ** x):ys
+          foldingFunction (x:xs) "ln" = log x:xs
+          foldingFunction xs "sum" = [sum xs]
+          foldingFunction xs numberString = read numberString:xs
+ #+end_src
 
-    solveRPN :: String -> Float
-    solveRPN = head . foldl foldingFunction [] . words
-        where   foldingFunction (x:y:ys) "*" = (x * y):ys
-                foldingFunction (x:y:ys) "+" = (x + y):ys
-                foldingFunction (x:y:ys) "-" = (y - x):ys
-                foldingFunction (x:y:ys) "/" = (y / x):ys
-                foldingFunction (x:y:ys) "^" = (y ** x):ys
-                foldingFunction (x:xs) "ln" = log x:xs
-                foldingFunction xs "sum" = [sum xs]
-                foldingFunction xs numberString = read numberString:xs
- #+END_EXAMPLE
 
  Wow, great! =/= is division of course and =**= is floating point
  exponentiation. With the logarithm operator, we just pattern match
@@ -11421,24 +11464,37 @@ main = print $ bmiTell 19
  just return a stack that has only one element, which is the sum of the
  stack so far.
 
- #+BEGIN_EXAMPLE
-    ghci> solveRPN "2.7 ln"
-    0.9932518
-    ghci> solveRPN "10 10 10 10 sum 4 /"
-    10.0
-    ghci> solveRPN "10 10 10 10 10 sum 4 /"
-    12.5
-    ghci> solveRPN "10 2 ^"
-    100.0
- #+END_EXAMPLE
+ #+begin_src haskell :compile yes :noweb yes
+<<newSolveRPN>>
+
+main = do
+  print $ solveRPN "2.7 ln"
+  print $ solveRPN "10 10 10 10 sum 4 /"
+  print $ solveRPN "10 10 10 10 10 sum 4 /"
+  print $ solveRPN "10 2 ^"
+ #+end_src
+
+ #+RESULTS:
+ | 0.9932518 |
+ |      10.0 |
+ |      12.5 |
+ |     100.0 |
+
 
  Notice that we can include floating point numbers in our expression
  because =read= knows how to read them.
 
- #+BEGIN_EXAMPLE
-    ghci> solveRPN "43.2425 0.5 ^"
-    6.575903
- #+END_EXAMPLE
+
+ #+begin_src haskell :compile yes :noweb yes
+<<newSolveRPN>>
+
+main = do
+  print $ solveRPN "43.2425 0.5 ^"
+ #+end_src
+
+ #+RESULTS:
+ : 6.575903
+
 
  I think that making a function that can calculate arbitrary floating
  point RPN expressions and has the option to be easily extended in 10
@@ -11454,7 +11510,7 @@ main = print $ bmiTell 19
  you can go ahead and try it! Hint: you can use =reads= to see if a read
  was successful or not.
 
- 
+
 *** TODO Heathrow to London
 
  Our next problem is this: your plane has just landed in England and you
@@ -11909,9 +11965,9 @@ main = print $ bmiTell 19
  feed to what we just wrote. If you get stack overflows, try using
  =foldl'= instead of =foldl=, because =foldl'= is strict.
 
- 
 
- 
+
+
 ** TODO Functors, Applicative Functors and Monoids
 
  Haskell's combination of purity, higher order functions, parameterized
@@ -12496,9 +12552,9 @@ main = print $ bmiTell 19
  by three and then it will go through the attached transformation where
  it will be added to three. This is what happens with composition.
 
- 
 
- 
+
+
 *** TODO Applicative functors
 
  #+CAPTION: disregard this analogy
@@ -13405,7 +13461,7 @@ main = print $ bmiTell 19
  on any number of applicative functors and take advantage of the
  semantics of each one.
 
- 
+
 *** TODO The newtype keyword
 
  #+CAPTION: why\_ so serious?
@@ -13548,7 +13604,7 @@ main = print $ bmiTell 19
  think of this as wrapping and unwrapping, but you can also think of it
  as converting values from one type to the other.
 
- 
+
 **** Using newtype to make type class instances
 
  Many times, we want to make our types instances of certain type classes,
@@ -13633,7 +13689,7 @@ main = print $ bmiTell 19
     ("gnillac nodnol",3)
  #+END_EXAMPLE
 
- 
+
 **** On newtype laziness
 
  We mentioned that /newtype/ is usually faster than /data/. The only
@@ -13742,7 +13798,7 @@ main = print $ bmiTell 19
  like taking something out of a box (like it is with /data/), it's more
  about making a direct conversion from one type to another.
 
- 
+
 **** =type= vs. =newtype= vs. =data=
 
  At this point, you may be a bit confused about what exactly the
@@ -13816,9 +13872,9 @@ main = print $ bmiTell 19
  want to make something completely new, odds are good that you're looking
  for the /data/ keyword.
 
- 
 
- 
+
+
 *** TODO Monoids
 
  #+CAPTION: wow this is pretty much the gayest pirate ship ever
@@ -13967,7 +14023,7 @@ main = print $ bmiTell 19
  these laws, so we as the programmer have to be careful that our
  instances do indeed obey them.
 
- 
+
 **** Lists are monoids
 
  Yes, lists are monoids! Like we've seen, the =++= function and the empty
@@ -14037,7 +14093,7 @@ main = print $ bmiTell 19
  are the same is just a property of multiplication, but it doesn't hold
  for all (and indeed, most) monoids.
 
- 
+
 **** =Product= and =Sum=
 
  We already examined one way for numbers to be considered monoids. Just
@@ -14119,7 +14175,7 @@ main = print $ bmiTell 19
     6
  #+END_EXAMPLE
 
- 
+
 **** =Any= and =All=
 
  Another type which can act like a monoid in two distinct but equally
@@ -14199,7 +14255,7 @@ main = print $ bmiTell 19
  which take lists of =Bool=s and return =True= if any of them are =True=
  or if all of them are =True=, respectively.
 
- 
+
 **** The =Ordering= monoid
 
  Hey, remember the =Ordering= type? It's used as the result when
@@ -14345,7 +14401,7 @@ main = print $ bmiTell 19
  compare things by many different criteria and put those criteria in an
  order themselves, ranging from the most important to the least.
 
- 
+
 **** =Maybe= the monoid
 
  Let's take a look at the various ways that =Maybe a= can be made an
@@ -14449,7 +14505,7 @@ main = print $ bmiTell 19
     Just "two"
  #+END_EXAMPLE
 
- 
+
 **** Using monoids to fold data structures
 
  One of the more interesting ways to put monoids to work is to make them
@@ -14651,9 +14707,9 @@ main = print $ bmiTell 19
  What's cool is that all of these trick aren't limited to trees, they
  work on any instance of =Foldable=.
 
- 
 
- 
+
+
 ** TODO A Fistful of Monads
 
  When we first talked about functors, we saw that they were a useful
@@ -14757,7 +14813,7 @@ main = print $ bmiTell 19
  to see how these fancy values are fed to functions and how to take into
  account their behavior, but you'll see that it's easy as one two three.
 
- 
+
 *** TODO Getting our feet wet with Maybe
 
  #+CAPTION: monads, grasshoppa
@@ -14916,7 +14972,7 @@ main = print $ bmiTell 19
  We'll come back to =Maybe= in a minute, but first, let's check out the
  type class that belongs to monads.
 
- 
+
 *** TODO The Monad type class
 
  Just like functors have the =Functor= type class and applicative
@@ -15026,9 +15082,9 @@ main = print $ bmiTell 19
  And we still didn't lose the context of our =Maybe= value, because when
  it's =Nothing=, the result of using =>>== will be =Nothing= as well.
 
- 
 
- 
+
+
 *** TODO Walk the line
 
  #+CAPTION: pierre
@@ -15391,7 +15447,7 @@ main = print $ bmiTell 19
  our values were values with failure and so when we applied functions to
  such values, the possibility of failure was always taken into account.
 
- 
+
 *** TODO do notation
 
  Monads in Haskell are so useful that they got their own special syntax
@@ -15664,9 +15720,9 @@ main = print $ bmiTell 19
  our monad instead of causing a program-wide failure, which is pretty
  neat.
 
- 
 
- 
+
+
 *** TODO The list monad
 
  #+CAPTION: dead cat
@@ -15947,7 +16003,7 @@ main = print $ bmiTell 19
 
  So filtering in list comprehensions is the same as using =guard=.
 
- 
+
 **** A knight's quest
 
  Here's a problem that really lends itself to being solved with
@@ -16076,7 +16132,7 @@ main = print $ bmiTell 19
  the number of moves to take instead of that number being hardcoded like
  it is now.
 
- 
+
 *** TODO Monad laws
 
  #+CAPTION: the court finds you guilty of peeing all over everything
@@ -16099,7 +16155,7 @@ main = print $ bmiTell 19
  we're going to have to manually check the if the laws hold. But don't
  worry, they're not complicated.
 
- 
+
 **** Left identity
 
  The first monad law states that if we take a value, put it in a default
@@ -16145,7 +16201,7 @@ main = print $ bmiTell 19
  side-effects but just presents a value as its result. So it makes sense
  that this law holds for =IO= as well.
 
- 
+
 **** Right identity
 
  The second law states that if we have a monadic value and we use =>>==
@@ -16188,7 +16244,7 @@ main = print $ bmiTell 19
  values into monadic ones and it wouldn't be good if the monadic value
  that it produced did a lot of other stuff.
 
- 
+
 **** Associativity
 
  The final monad law says that when we have a chain of monadic function
@@ -16295,9 +16351,9 @@ main = print $ bmiTell 19
  take a look at a whole bunch of other cool monads and we'll also learn
  how to make our own.
 
- 
 
- 
+
+
 ** TODO For a Few Monads More
 
  #+CAPTION: there are two kinds of people in the world, my friend. those
@@ -16326,7 +16382,7 @@ main = print $ bmiTell 19
  Haskell packages you have installed and one of them should be =mtl=,
  followed by a version number.
 
- 
+
 *** TODO Writer? I hardly know her!
 
  We've loaded our gun with the =Maybe= monad, the list monad and the =IO=
@@ -16444,7 +16500,7 @@ main = print $ bmiTell 19
  See how inside the lambda, =x= is just a normal string and not a tuple
  and how =applyLog= takes care of appending the logs.
 
- 
+
 **** Monoids to the rescue
 
  #+BEGIN_QUOTE
@@ -16556,7 +16612,7 @@ main = print $ bmiTell 19
  cents, so =("beer", Sum 35)=. And if we use =applyLog= to feed that to
  =addDrink=, we get another beer and the result is =("beer", Sum 65)=.
 
- 
+
 **** The =Writer= type
 
  Now that we've seen that a value with an attached monoid acts like a
@@ -16630,7 +16686,7 @@ main = print $ bmiTell 19
  The =Writer= instance doesn't feature an implementation for =fail=, so
  if a pattern match fails in =do= notation, =error= is called.
 
- 
+
 **** Using do notation with Writer
 
  Now that we have a =Monad= instance, we're free to use =do= notation for
@@ -16698,7 +16754,7 @@ main = print $ bmiTell 19
     (15,["Got number: 3","Got number: 5","Gonna multiply these two"])
  #+END_EXAMPLE
 
- 
+
 **** Adding logging to programs
 
  Euclid's algorithm is an algorithm that takes two numbers and computes
@@ -16809,7 +16865,7 @@ main = print $ bmiTell 19
  with =Writer= values where we want and change normal function
  application to =>>== (or =do= expressions if it increases readability).
 
- 
+
 **** Inefficient list construction
 
  When using the =Writer= monad, you have to be careful which monoid to
@@ -16873,7 +16929,7 @@ main = print $ bmiTell 19
  It's inefficient because it ends up associating the use of =++= to the
  left instead of to the right.
 
- 
+
 **** Difference lists
 
  #+CAPTION: cactuses
@@ -16987,7 +17043,7 @@ main = print $ bmiTell 19
  =fromDiffList= to convert it to a normal list and then finally print its
  entries to the screen.
 
- 
+
 **** Comparing Performance
 
  To get a feel for just how much difference lists may improve your
@@ -17049,7 +17105,7 @@ main = print $ bmiTell 19
  Oh, by the way, the song Final Countdown by Europe is now stuck in your
  head. Enjoy!
 
- 
+
 *** TODO Reader? Ugh, not this joke again.
 
  #+CAPTION: bang youre dead
@@ -17176,7 +17232,7 @@ main = print $ bmiTell 19
  results and the =>>== implementation will make sure that it all works
  out.
 
- 
+
 *** TODO Tasteful stateful computations
 
  #+CAPTION: don't jest with texas
@@ -17254,7 +17310,7 @@ main = print $ bmiTell 19
  have to provide some initial state to actually get that result and that
  apart from getting a result we also get a new state.
 
- 
+
 **** Stacks and stones
 
  Say we want to model operating a stack. You have a stack of things one
@@ -17335,7 +17391,7 @@ main = print $ bmiTell 19
  we will be able to take stateful computations like these and use them
  without having to manage the state manually.
 
- 
+
 **** The State monad
 
  The =Control.Monad.State= module provides a =newtype= that wraps
@@ -17530,7 +17586,7 @@ main = print $ bmiTell 19
  the state monad, the monad is actually =State s=, so if that =s= was
  different, we'd be using =>>== between two different monads.
 
- 
+
 **** Randomness and the state monad
 
  At the beginning of this section, we saw how generating numbers can
@@ -17587,7 +17643,7 @@ main = print $ bmiTell 19
  Nice. Doing these sort of things that require some state to be kept in
  between steps just became much less of a hassle!
 
- 
+
 *** TODO Error error on the wall
 
  We know by now that =Maybe= is used to add a context of possible failure
@@ -17705,7 +17761,7 @@ main = print $ bmiTell 19
  monad so that when the tightrope walker slips and falls, we remember how
  many birds were on each side of the pole when he fell.
 
- 
+
 *** TODO Some useful monadic functions
 
  In this section, we're going to explore a few functions that either
@@ -17715,7 +17771,7 @@ main = print $ bmiTell 19
  counterparts of functions that we already know, like =filter= and
  =foldl=. Let's see what they are then!
 
- 
+
 **** liftM and friends
 
  #+CAPTION: im a cop too
@@ -17888,7 +17944,7 @@ main = print $ bmiTell 19
  the monadic equivalents of the functions that functors and applicative
  functors use.
 
- 
+
 **** The join function
 
  Here's some food for thought: if the result of one monadic value is
@@ -18016,7 +18072,7 @@ main = print $ bmiTell 19
  often easier to figure out how we would flatten a nested monadic value
  than figuring out how to implement =>>==.
 
- 
+
 **** filterM
 
  The =filter= function is pretty much the bread of Haskell programming
@@ -18152,7 +18208,7 @@ main = print $ bmiTell 19
  consider lists as non-deterministic values that don't know what to be so
  they just decide to be everything at once, it's a bit easier.
 
- 
+
 **** foldM
 
  The monadic counterpart to =foldl= is =foldM=. If you remember your
@@ -18218,7 +18274,7 @@ main = print $ bmiTell 19
  returns a =Writer= value is cool as well because then you log whatever
  you want as your fold goes along its way.
 
- 
+
 **** Making a safe RPN calculator
 
  #+CAPTION: i've found yellow!
@@ -18378,7 +18434,7 @@ main = print $ bmiTell 19
  element in it and so the pattern matching in the =do= expression fails.
  The second failure happens because =readMaybe= returns a =Nothing=.
 
- 
+
 **** Composing monadic functions
 
  When we were learning about the monad laws, we said that the =<=<=
@@ -18465,7 +18521,7 @@ main = print $ bmiTell 19
     canReachIn x start end = end `elem` inMany x start
  #+END_EXAMPLE
 
- 
+
 *** TODO Making monads
 
  #+CAPTION: kewl
@@ -18718,9 +18774,9 @@ main = print $ bmiTell 19
  think that's quite fetching! By now, we should have a pretty good grasp
  on monads and what they're about.
 
- 
 
- 
+
+
 ** TODO Zippers
 
  #+CAPTION: hi im chet
@@ -18752,7 +18808,7 @@ main = print $ bmiTell 19
  on a part of it in a way that makes changing its elements easy and
  walking around it efficient. Nice!
 
- 
+
 *** TODO Taking a walk
 
  Like we've learned in biology class, there are many different kinds of
@@ -18882,7 +18938,7 @@ main = print $ bmiTell 19
  one that allows us to efficiently switch focus to sub-trees that are
  nearby.
 
- 
+
 *** TODO A trail of breadcrumbs
 
  #+CAPTION: whoop dee doo
@@ -18955,7 +19011,7 @@ main = print $ bmiTell 19
     (Node 'W' (Node 'C' Empty Empty) (Node 'R' Empty Empty),[L,R])
  #+END_EXAMPLE
 
- 
+
 **** Going back up
 
  What if we now want to go back up in our tree? From our breadcrumbs we
@@ -19078,7 +19134,7 @@ main = print $ bmiTell 19
  is more widely used to describe such a setup, so we'll stick with
  =Zipper=.
 
- 
+
 **** Manipulating trees under focus
 
  Now that we can move up and down, let's make a function that modifies
@@ -19153,7 +19209,7 @@ main = print $ bmiTell 19
  to walk all the way to the top of the tree, it would be the same tree as
  =freeTree= but with an additional ='Z'= on its far left.
 
- 
+
 **** I'm going straight to the top, oh yeah, up where the air is fresh
  and clean!
 
@@ -19175,7 +19231,7 @@ main = print $ bmiTell 19
  to focus on the root of our tree and see the changes that we've done in
  proper perspective.
 
- 
+
 *** TODO Focusing on lists
 
  Zippers can be used with pretty much any data structure, so it's no
@@ -19275,7 +19331,7 @@ main = print $ bmiTell 19
  on. By using a zipper, it would also make it easier to insert new lines
  anywhere in the text or delete existing ones.
 
- 
+
 *** TODO A very simple file system
 
  Now that we know how zippers work, let's use trees to represent a very
@@ -19330,7 +19386,7 @@ main = print $ bmiTell 19
 
  That's actually what my disk contains right now.
 
- 
+
 **** A zipper for our file system
 
  #+CAPTION: spongedisk
@@ -19461,7 +19517,7 @@ main = print $ bmiTell 19
     File "watermelon_smash.gif" "smash!!"
  #+END_EXAMPLE
 
- 
+
 **** Manipulating our file system
 
  Now that we know how to navigate our file system, manipulating it is
@@ -19513,7 +19569,7 @@ main = print $ bmiTell 19
  around our data structures, so the persistence of Haskell's data
  structures really begins to shine.
 
- 
+
 *** TODO Watch your step
 
  So far, while walking through our data structures, whether they were
