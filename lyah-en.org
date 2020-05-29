@@ -1,15 +1,14 @@
 #+TODO: TODO_NEXT(n) TODO(t) WAIT(w!) | DONE(d) CANCELED(c)
 [[file:media/lyah.jpg]]
 
-* TODO Learn You a Haskell for Great Good! [4%]
+* TODO Learn You a Haskell for Great Good! [18%]
   :PROPERTIES:
   :COOKIE_DATA: todo recursive
   :END:
-** DONE Introduction
+** DONE Introduction [100%]
    CLOSED: [2020-04-28 Tue 22:48]
-
-
-*** About this tutorial
+*** DONE About this tutorial
+    CLOSED: [2020-05-29 Fri 12:12]
 
  Welcome to /Learn You a Haskell for Great Good/! If you're reading this,
  chances are you want to learn Haskell. Well, you've come to the right
@@ -50,8 +49,8 @@
  much like learning to program for the first time --- it's fun! It forces
  you to think differently, which brings us to the next section ...
 
-
-*** So what's Haskell?
+*** DONE So what's Haskell?
+    CLOSED: [2020-05-29 Fri 12:12]
 
  [[file:media/fx.png]] Haskell is a /purely functional programming
  language/. In imperative languages you get things done by giving the
@@ -125,8 +124,8 @@
  design a kick-ass language. In 2003 the Haskell Report was published,
  which defines a stable version of the language.
 
-
-*** What you need to dive in
+*** DONE What you need to dive in
+    CLOSED: [2020-05-29 Fri 12:12]
 
  A text editor and a Haskell compiler. You probably already have your
  favorite text editor installed so we won't waste time on that. For the
@@ -153,10 +152,7 @@
  changing the .hs file, loading it up again and so on. This is also what
  we'll be doing here.
 
-
-
-
-** TODO_NEXT Starting Out
+** DONE Starting Out [100%]
 *** DONE Ready, set, go!
     CLOSED: [2020-04-28 Tue 19:31]
 
@@ -368,8 +364,8 @@ succ 9 + max 5 4 + 1
  some number and then we call =bar= again with that number. In C, that
  would be something like =bar(bar(3))=.
 
-
-*** TODO_NEXT Baby's first functions
+*** DONE Baby's first functions
+    CLOSED: [2020-05-29 Fri 12:06]
 
  In the previous section we got a basic feel for calling functions. Now
  let's try making our own! Open up your favorite text editor and punch in
@@ -377,14 +373,21 @@ succ 9 + max 5 4 + 1
 
 
 
+#+NAME: doubleMe
  #+begin_src haskell :results output
 doubleMe x = x + x
-doubleMe 8
  #+end_src
 
- #+RESULTS:
- :
- : 16
+ #+RESULTS: doubleMe
+
+#+begin_src haskell :results output :noweb yes
+<<doubleMe>>
+doubleMe 8
+#+end_src
+
+#+RESULTS:
+:
+: 16
 
 
  Functions are defined in a similar way that they are called. The
@@ -394,6 +397,7 @@ doubleMe 8
  where it's saved and run =ghci= from there. Once inside GHCI, do
  =:l baby=. Now that our script is loaded, we can play with the function
  that we defined.
+
 
  #+BEGIN_EXAMPLE
     ghci> :l baby
@@ -410,33 +414,43 @@ doubleMe 8
  works on any number. Let's make a function that takes two numbers and
  multiplies each by two and then adds them together.
 
+#+NAME: doubleUs
+#+begin_src haskell :results output
+doubleUs x y = x*2 + y*2
+#+end_src
 
+#+RESULTS:
 
- #+BEGIN_EXAMPLE
-    doubleUs x y = x*2 + y*2
- #+END_EXAMPLE
 
  Simple. We could have also defined it as =doubleUs x y = x + x + y + y=.
  Testing it out produces pretty predictable results (remember to append
  this function to the =baby.hs= file, save it and then do =:l baby=
  inside GHCI).
 
- #+BEGIN_EXAMPLE
-    ghci> doubleUs 4 9
-    26
-    ghci> doubleUs 2.3 34.2
-    73.0
-    ghci> doubleUs 28 88 + doubleMe 123
-    478
- #+END_EXAMPLE
+#+begin_src haskell :results output :noweb yes
+<<doubleUs>>
+<<doubleMe>>
+doubleUs 4 9
+doubleUs 2.3 34.2
+doubleUs 28 88 + doubleMe 123
+#+end_src
+
+#+RESULTS:
+:
+: Prelude> 26
+: 73.0
+: 478
+
 
  As expected, you can call your own functions from other functions that
  you made. With that in mind, we could redefine =doubleUs= like this:
 
+#+NAME: doubleUsNew
+#+begin_src haskell
+doubleUs x y = doubleMe x + doubleMe y
+#+end_src
 
- #+BEGIN_EXAMPLE
-    doubleUs x y = doubleMe x + doubleMe y
- #+END_EXAMPLE
+#+RESULTS: doubleUsNew
 
  This is a very simple example of a common pattern you will see
  throughout Haskell. Making basic functions that are obviously correct
@@ -453,13 +467,13 @@ doubleMe 8
  Now we're going to make a function that multiplies a number by 2 but
  only if that number is smaller than or equal to 100 because numbers
  bigger than 100 are big enough as it is!
+ #+NAME: doubleSmallNumber
+ #+begin_src haskell :results output
+doubleSmallNumber x = if x > 100
+                      then x
+                      else x*2
+ #+end_src
 
-
- #+BEGIN_EXAMPLE
-    doubleSmallNumber x = if x > 100
-                            then x
-                            else x*2
- #+END_EXAMPLE
 
  #+CAPTION: this is you
  [[file:media/guycar.png]]
@@ -481,9 +495,10 @@ doubleMe 8
  have written its body like this.
 
 
- #+BEGIN_EXAMPLE
-    doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
- #+END_EXAMPLE
+#+begin_src haskell :results output
+doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
+#+end_src
+
 
  Had we omitted the parentheses, it would have added one only if =x=
  wasn't greater than 100. Note the ='= at the end of the function name.
@@ -494,9 +509,12 @@ doubleMe 8
  valid character in functions, we can make a function like this.
 
 
- #+BEGIN_EXAMPLE
-    conanO'Brien = "It's a-me, Conan O'Brien!"
- #+END_EXAMPLE
+#+begin_src haskell :results output
+conanO'Brien = "It's a-me, Conan O'Brien!"
+#+end_src
+
+#+RESULTS:
+
 
  There are two noteworthy things here. The first is that in the function
  name we didn't capitalize Conan's name. That's because functions can't
@@ -507,8 +525,8 @@ doubleMe 8
  we've defined them, =conanO'Brien= and the string
  ="It's a-me, Conan O'Brien!"= can be used interchangeably.
 
-
-*** TODO An intro to lists
+*** DONE An intro to lists
+    CLOSED: [2020-05-29 Fri 12:21]
 
  [[file:media/list.png]] Much like shopping lists in the real world,
  lists in Haskell are very useful. It's the most used data structure and
@@ -641,18 +659,21 @@ b !! 2
  lexicographical order. First the heads are compared. If they are equal
  then the second elements are compared, etc.
 
- #+BEGIN_EXAMPLE
-    ghci> [3,2,1] > [2,1,0]
-    True
-    ghci> [3,2,1] > [2,10,100]
-    True
-    ghci> [3,4,2] > [3,4]
-    True
-    ghci> [3,4,2] > [2,4]
-    True
-    ghci> [3,4,2] == [3,4,2]
-    True
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+[3,2,1] > [2,1,0]
+[3,2,1] > [2,10,100]
+[3,4,2] > [3,4]
+[3,4,2] > [2,4]
+[3,4,2] == [3,4,2]
+ #+end_src
+
+ #+RESULTS:
+ : True
+ : True
+ : True
+ : True
+ : True
+
 
  What else can you do with lists? Here are some basic functions that
  operate on lists.
@@ -660,32 +681,41 @@ b !! 2
  =head= takes a list and returns its head. The head of a list is
  basically its first element.
 
- #+BEGIN_EXAMPLE
-    ghci> head [5,4,3,2,1]
-    5
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+head [5,4,3,2,1]
+ #+end_src
+
+ #+RESULTS:
+ : 5
 
  =tail= takes a list and returns its tail. In other words, it chops off a
  list's head.
 
- #+BEGIN_EXAMPLE
-    ghci> tail [5,4,3,2,1]
-    [4,3,2,1]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+tail [5,4,3,2,1]
+ #+end_src
+
+ #+RESULTS:
+ : [4,3,2,1]
 
  =last= takes a list and returns its last element.
 
- #+BEGIN_EXAMPLE
-    ghci> last [5,4,3,2,1]
-    1
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+last [5,4,3,2,1]
+ #+end_src
+
+ #+RESULTS:
+ : 1
+
 
  =init= takes a list and returns everything except its last element.
 
- #+BEGIN_EXAMPLE
-    ghci> init [5,4,3,2,1]
-    [5,4,3,2]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+init [5,4,3,2,1]
+ #+end_src
+
+ #+RESULTS:
+ : [5,4,3,2]
 
  If we think of a list as a monster, here's what's what.
 
@@ -694,10 +724,13 @@ b !! 2
 
  But what happens if we try to get the head of an empty list?
 
- #+BEGIN_EXAMPLE
-    ghci> head []
-    *** Exception: Prelude.head: empty list
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+head []
+ #+end_src
+
+ #+RESULTS:
+ : *** Exception: Prelude.head: empty list
+
 
  Oh my! It all blows up in our face! If there's no monster, it doesn't
  have a head. When using =head=, =tail=, =last= and =init=, be careful
@@ -708,42 +741,52 @@ b !! 2
 
  =length= takes a list and returns its length, obviously.
 
- #+BEGIN_EXAMPLE
-    ghci> length [5,4,3,2,1]
-    5
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+length [5,4,3,2,1]
+ #+end_src
+
+ #+RESULTS:
+ : 5
 
  =null= checks if a list is empty. If it is, it returns =True=, otherwise
  it returns =False=. Use this function instead of =xs == []= (if you have
  a list called =xs=)
 
- #+BEGIN_EXAMPLE
-    ghci> null [1,2,3]
-    False
-    ghci> null []
-    True
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+null [1,2,3]
+null []
+ #+end_src
+
+ #+RESULTS:
+ : False
+ : True
 
  =reverse= reverses a list.
 
- #+BEGIN_EXAMPLE
-    ghci> reverse [5,4,3,2,1]
-    [1,2,3,4,5]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+reverse [5,4,3,2,1]
+ #+end_src
+
+ #+RESULTS:
+ : [1,2,3,4,5]
 
  =take= takes number and a list. It extracts that many elements from the
  beginning of the list. Watch.
 
- #+BEGIN_EXAMPLE
-    ghci> take 3 [5,4,3,2,1]
-    [5,4,3]
-    ghci> take 1 [3,9,3]
-    [3]
-    ghci> take 5 [1,2]
-    [1,2]
-    ghci> take 0 [6,6,6]
-    []
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+take 3 [5,4,3,2,1]
+take 1 [3,9,3]
+take 5 [1,2]
+take 0 [6,6,6]
+take (-1) [6,6,6]
+ #+end_src
+
+ #+RESULTS:
+ : [5,4,3]
+ : [3]
+ : [1,2]
+ : []
+ : []
 
  See how if we try to take more elements than there are in the list, it
  just returns the list. If we try to take 0 elements, we get an empty
@@ -752,54 +795,62 @@ b !! 2
  =drop= works in a similar way, only it drops the number of elements from
  the beginning of a list.
 
- #+BEGIN_EXAMPLE
-    ghci> drop 3 [8,4,2,1,5,6]
-    [1,5,6]
-    ghci> drop 0 [1,2,3,4]
-    [1,2,3,4]
-    ghci> drop 100 [1,2,3,4]
-    []
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+drop 3 [8,4,2,1,5,6]
+drop 0 [1,2,3,4]
+drop 100 [1,2,3,4]
+ #+end_src
+
+ #+RESULTS:
+ : [1,5,6]
+ : [1,2,3,4]
+ : []
+ : [1,2,3,4]
 
  =maximum= takes a list of stuff that can be put in some kind of order
  and returns the biggest element.
 
  =minimum= returns the smallest.
 
- #+BEGIN_EXAMPLE
-    ghci> minimum [8,4,2,1,5,6]
-    1
-    ghci> maximum [1,9,2,3,4]
-    9
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+minimum [8,4,2,1,5,6]
+maximum [1,9,2,3,4]
+ #+end_src
+
+ #+RESULTS:
+ : 1
+ : 9
 
  =sum= takes a list of numbers and returns their sum.
 
  =product= takes a list of numbers and returns their product.
 
- #+BEGIN_EXAMPLE
-    ghci> sum [5,2,1,6,3,2,5,7]
-    31
-    ghci> product [6,2,1,2]
-    24
-    ghci> product [1,2,5,6,7,9,2,0]
-    0
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+sum [5,2,1,6,3,2,5,7]
+product [6,2,1,2]
+product [1,2,5,6,7,9,2,0]
+ #+end_src
+
+ #+RESULTS:
+ : 31
+ : 24
+ : 0
 
  =elem= takes a thing and a list of things and tells us if that thing is
  an element of the list. It's usually called as an infix function because
  it's easier to read that way.
 
- #+BEGIN_EXAMPLE
-    ghci> 4 `elem` [3,4,5,6]
-    True
-    ghci> 10 `elem` [3,4,5,6]
-    False
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+ 4 `elem` [3,4,5,6]
+ 10 `elem` [3,4,5,6]
+ #+end_src
+
+ #+RESULTS:
+ : True
+ : False
 
  Those were a few basic functions that operate on lists. We'll take a
  look at more list functions [[#ch002.xhtml#data-list][later]]
-
 
 *** DONE Texas ranges
     CLOSED: [2020-05-26 Tue 12:17]
@@ -913,11 +964,8 @@ replicate 3 10
  #+RESULTS:
  : [10,10,10]
 
-
-
-
-
-*** TODO I'm a list comprehension
+*** DONE I'm a list comprehension
+    CLOSED: [2020-05-29 Fri 12:24]
 
  [[file:media/kermit.png]] If you've ever taken a course in mathematics,
  you've probably run into /set comprehensions/. They're normally used for
@@ -1442,19 +1490,25 @@ Passed:
  comprehensions to process and produce strings. Here's a function that
  takes a string and removes everything except uppercase letters from it.
 
+ #+NAME: removeNonUppercase
+ #+begin_src haskell :results output
+removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
+ #+end_src
 
- #+BEGIN_EXAMPLE
-    removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
- #+END_EXAMPLE
 
  Testing it out:
 
- #+BEGIN_EXAMPLE
-    ghci> removeNonUppercase "Hahaha! Ahahaha!"
-    "HA"
-    ghci> removeNonUppercase "IdontLIKEFROGS"
-    "ILIKEFROGS"
- #+END_EXAMPLE
+ #+begin_src haskell :results output :noweb yes
+<<removeNonUppercase>>
+removeNonUppercase "Hahaha! Ahahaha!"
+removeNonUppercase "IdontLIKEFROGS"
+ #+end_src
+
+ #+RESULTS:
+ :
+ : HA
+ : ILIKEFROGS
+
 
  The predicate here does all the work. It says that the character will be
  included in the new list only if it's an element of the list
@@ -1462,18 +1516,21 @@ Passed:
  operating on lists that contain lists. A list contains several lists of
  numbers. Let's remove all odd numbers without flattening the list.
 
- #+BEGIN_EXAMPLE
-    ghci> let xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]
-    ghci> [ [ x | x <- xs, even x ] | xs <- xxs]
-    [[2,2,4],[2,4,6,8],[2,4,2,6,2,6]]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+let xxs = [[1,3,5,2,3,1,2,4,5],[1,2,3,4,5,6,7,8,9],[1,2,4,2,1,6,3,1,3,2,3,6]]
+[ [ x | x <- xs, even x ] | xs <- xxs]
+ #+end_src
+
+ #+RESULTS:
+ :
+ : [[2,2,4],[2,4,6,8],[2,4,2,6,2,6]]
 
  You can write list comprehensions across several lines. So if you're not
  in GHCI, it's better to split longer list comprehensions across multiple
  lines, especially if they're nested.
 
-
-*** TODO Tuples
+*** DONE Tuples
+    CLOSED: [2020-05-29 Fri 13:08]
 
  #+CAPTION: tuples
  [[file:media/tuple.png]]
@@ -1540,21 +1597,27 @@ Passed:
 
  =fst= takes a pair and returns its first component.
 
- #+BEGIN_EXAMPLE
-    ghci> fst (8,11)
-    8
-    ghci> fst ("Wow", False)
-    "Wow"
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+ fst (8,11)
+ fst ("Wow", False)
+ #+end_src
+
+ #+RESULTS:
+ : 8
+ : Wow
+
 
  =snd= takes a pair and returns its second component. Surprise!
 
- #+BEGIN_EXAMPLE
-    ghci> snd (8,11)
-    11
-    ghci> snd ("Wow", False)
-    False
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+snd (8,11)
+snd ("Wow", False)
+ #+end_src
+
+ #+RESULTS:
+ : 11
+ : False
+
 
  #+BEGIN_QUOTE
    /Note:/ these functions operate only on pairs. They won't work on
@@ -1568,12 +1631,14 @@ Passed:
  uses. It's especially useful for when you want to combine two lists in a
  way or traverse two lists simultaneously. Here's a demonstration.
 
- #+BEGIN_EXAMPLE
-    ghci> zip [1,2,3,4,5] [5,5,5,5,5]
-    [(1,5),(2,5),(3,5),(4,5),(5,5)]
-    ghci> zip [1 .. 5] ["one", "two", "three", "four", "five"]
-    [(1,"one"),(2,"two"),(3,"three"),(4,"four"),(5,"five")]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+zip [1,2,3,4,5] [5,5,5,5,5]
+zip [1 .. 5] ["one", "two", "three", "four", "five"]
+ #+end_src
+
+ #+RESULTS:
+ : [(1,5),(2,5),(3,5),(4,5),(5,5)]
+ : [(1,"one"),(2,"two"),(3,"three"),(4,"four"),(5,"five")]
 
  It pairs up the elements and produces a new list. The first element goes
  with the first, the second with the second, etc. Notice that because
@@ -1581,19 +1646,23 @@ Passed:
  contain different types and zip them up. What happens if the lengths of
  the lists don't match?
 
- #+BEGIN_EXAMPLE
-    ghci> zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"]
-    [(5,"im"),(3,"a"),(2,"turtle")]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"]
+ #+end_src
+
+ #+RESULTS:
+ : [(5,"im"),(3,"a"),(2,"turtle")]
 
  The longer list simply gets cut off to match the length of the shorter
  one. Because Haskell is lazy, we can zip finite lists with infinite
  lists:
 
- #+BEGIN_EXAMPLE
-    ghci> zip [1..] ["apple", "orange", "cherry", "mango"]
-    [(1,"apple"),(2,"orange"),(3,"cherry"),(4,"mango")]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+zip [1..] ["apple", "orange", "cherry", "mango"]
+ #+end_src
+
+ #+RESULTS:
+ : [(1,"apple"),(2,"orange"),(3,"cherry"),(4,"mango")]
 
  #+CAPTION: look at meee
  [[file:media/pythag.png]]
@@ -1603,9 +1672,10 @@ Passed:
  smaller than 10 has a perimeter of 24? First, let's try generating all
  triangles with sides equal to or smaller than 10:
 
- #+BEGIN_EXAMPLE
-    ghci> let triangles = [ (a,b,c) | c <- [1..10], b <- [1..10], a <- [1..10] ]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+let triangles = [ (a,b,c) | c <- [1..10], b <- [1..10], a <- [1..10] ]
+ #+end_src
+
 
  We're just drawing from three lists and our output function is combining
  them into a triple. If you evaluate that by typing out =triangles= in
@@ -1615,29 +1685,31 @@ Passed:
  that side b isn't larger than the hypotenuse and that side a isn't
  larger than side b.
 
- #+BEGIN_EXAMPLE
-    ghci> let rightTriangles = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+let rightTriangles = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2]
+ #+end_src
+
 
  We're almost done. Now, we just modify the function by saying that we
  want the ones where the perimeter is 24.
 
- #+BEGIN_EXAMPLE
-    ghci> let rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]
-    ghci> rightTriangles'
-    [(6,8,10)]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+let rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]
+rightTriangles'
+ #+end_src
+
+ #+RESULTS:
+ :
+ : [(6,8,10)]
 
  And there's our answer! This is a common pattern in functional
  programming. You take a starting set of solutions and then you apply
  transformations to those solutions and filter them until you get the
  right ones.
 
-
-
-
-** TODO Types and Typeclasses
-*** TODO Believe the type
+** DONE Types and Typeclasses [100%]
+*** DONE Believe the type
+    CLOSED: [2020-05-29 Fri 13:32]
 
  #+CAPTION: moo
  [[file:media/cow.png]]
@@ -1666,7 +1738,7 @@ Passed:
  that by using the =:t= command which, followed by any valid expression,
  tells us its type. Let's give it a whirl.
 
-#+begin_src haskell
+#+begin_src haskell :results output
 :t 'a'
 :t True
 :t "HELLO!"
@@ -1675,22 +1747,13 @@ Passed:
 #+end_src
 
 #+RESULTS:
+: 'a' :: Char
+: True :: Bool
+: "HELLO!" :: [Char]
+: (True, 'a') :: (Bool, Char)
 : 4 == 5 :: Bool
 
 
-
- #+BEGIN_EXAMPLE
-    ghci> :t 'a'
-    'a' :: Char
-    ghci> :t True
-    True :: Bool
-    ghci> :t "HELLO!"
-    "HELLO!" :: [Char]
-    ghci> :t (True, 'a')
-    (True, 'a') :: (Bool, Char)
-    ghci> :t 4 == 5
-    4 == 5 :: Bool
- #+END_EXAMPLE
 
  [[file:media/bomb.png]] Here we see that doing =:t= on an expression
  prints out the expression followed by =::= and its type. =::= is read as
@@ -1713,11 +1776,11 @@ Passed:
  so that only caps remain? Here's how it looks like with a type
  declaration.
 
+ #+begin_src haskell :results output
+removeNonUppercase :: [Char] -> [Char]
+removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
+ #+end_src
 
- #+BEGIN_EXAMPLE
-    removeNonUppercase :: [Char] -> [Char]
-    removeNonUppercase st = [ c | c <- st, c `elem` ['A'..'Z']]
- #+END_EXAMPLE
 
  =removeNonUppercase= has a type of =[Char] -> [Char]=, meaning that it
  maps from a string to a string. That's because it takes one string as a
@@ -1731,10 +1794,10 @@ Passed:
  them together:
 
 
- #+BEGIN_EXAMPLE
-    addThree :: Int -> Int -> Int -> Int
-    addThree x y z = x + y + z
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+addThree :: Int -> Int -> Int -> Int
+addThree x y z = x + y + z
+ #+end_src
 
  The parameters are separated with =->= and there's no special
  distinction between the parameters and the return type. The return type
@@ -1758,43 +1821,53 @@ Passed:
  =Integer= stands for, er ... also integer. The main difference is that
  it's not bounded so it can be used to represent really really big
  numbers. I mean like really big. =Int=, however, is more efficient.
+ #+NAME: factorial
+ #+begin_src haskell :results output
+factorial :: Integer -> Integer
+factorial n = product [1..n]
+ #+end_src
+
+ #+RESULTS: factorial
 
 
- #+BEGIN_EXAMPLE
-    factorial :: Integer -> Integer
-    factorial n = product [1..n]
- #+END_EXAMPLE
+ #+begin_src haskell :compile yes :noweb yes
+<<factorial>>
+main = print $ factorial 50
+ #+end_src
 
- #+BEGIN_EXAMPLE
-    ghci> factorial 50
-    30414093201713378043612608166064768844377641568960512000000000000
- #+END_EXAMPLE
+ #+RESULTS:
+ : 3.0414093201713376e+64
+
 
  =Float= is a real floating point with single precision.
 
 
- #+BEGIN_EXAMPLE
-    circumference :: Float -> Float
-    circumference r = 2 * pi * r
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+circumference :: Float -> Float
+circumference r = 2 * pi * r
+ #+end_src
 
- #+BEGIN_EXAMPLE
-    ghci> circumference 4.0
-    25.132742
- #+END_EXAMPLE
+#+begin_src haskell :compile yes
+circumference :: Float -> Float
+circumference r = 2 * pi * r
+
+main = print $ circumference 4.0
+#+end_src
+
+#+RESULTS:
+: 25.132742
+
 
  =Double= is a real floating point with double the precision!
 
+ #+begin_src haskell :compile yes
+circumference' :: Double -> Double
+circumference' r = 2 * pi * r
+main = print $ circumference' 4.0
+ #+end_src
 
- #+BEGIN_EXAMPLE
-    circumference' :: Double -> Double
-    circumference' r = 2 * pi * r
- #+END_EXAMPLE
-
- #+BEGIN_EXAMPLE
-    ghci> circumference' 4.0
-    25.132741228718345
- #+END_EXAMPLE
+ #+RESULTS:
+ : 25.132741228718345
 
  =Bool= is a boolean type. It can have only two values: =True= and
  =False=.
@@ -1808,17 +1881,19 @@ Passed:
  the empty tuple =()= is also a type which can only have a single value:
  =()=
 
-
-*** TODO Type variables
+*** DONE Type variables
+    CLOSED: [2020-05-29 Fri 13:31]
 
  What do you think is the type of the =head= function? Because =head=
  takes a list of any type and returns the first element, so what could it
  be? Let's check!
 
- #+BEGIN_EXAMPLE
-    ghci> :t head
-    head :: [a] -> a
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+:t head
+ #+end_src
+
+ #+RESULTS:
+ : head :: [a] -> a
 
  [[file:media/box.png]] Hmmm! What is this =a=? Is it a type? Remember
  that we previously stated that types are written in capital case, so it
@@ -1837,10 +1912,13 @@ Passed:
  Remember =fst=? It returns the first component of a pair. Let's examine
  its type.
 
- #+BEGIN_EXAMPLE
-    ghci> :t fst
-    fst :: (a, b) -> a
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+:t fst
+ #+end_src
+
+ #+RESULTS:
+ : fst :: (a, b) -> a
+
 
  We see that =fst= takes a tuple which contains two types and returns an
  element which is of the same type as the pair's first component. That's
@@ -1849,10 +1927,8 @@ Passed:
  to be different types. It just states that the first component's type
  and the return value's type are the same.
 
-
-
-
-*** TODO Typeclasses 101
+*** DONE Typeclasses 101
+    CLOSED: [2020-05-29 Fri 13:31]
 
  #+CAPTION: class
  [[file:media/classes.png]]
@@ -1866,10 +1942,13 @@ Passed:
 
  What's the type signature of the ==== function?
 
- #+BEGIN_EXAMPLE
-    ghci> :t (==)
-    (==) :: (Eq a) => a -> a -> Bool
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+:t (==)
+ #+end_src
+
+ #+RESULTS:
+ : (==) :: Eq a => a -> a -> Bool
+
 
  #+BEGIN_QUOTE
    /Note/: the equality operator, ==== is a function. So are =+=, =*=,
@@ -1906,25 +1985,30 @@ Passed:
  except for functions are part of =Eq=, so they can be tested for
  equality.
 
- #+BEGIN_EXAMPLE
-    ghci> 5 == 5
-    True
-    ghci> 5 /= 5
-    False
-    ghci> 'a' == 'a'
-    True
-    ghci> "Ho Ho" == "Ho Ho"
-    True
-    ghci> 3.432 == 3.432
-    True
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+5 == 5
+5 /= 5
+'a' == 'a'
+"Ho Ho" == "Ho Ho"
+3.432 == 3.432
+ #+end_src
+
+ #+RESULTS:
+ : True
+ : False
+ : True
+ : True
+ : True
 
  =Ord= is for types that have an ordering.
 
- #+BEGIN_EXAMPLE
-    ghci> :t (>)
-    (>) :: (Ord a) => a -> a -> Bool
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+:t (>)
+ #+end_src
+
+ #+RESULTS:
+ : (>) :: Ord a => a -> a -> Bool
+
 
  All the types we covered so far except for functions are part of =Ord=.
  =Ord= covers all the standard comparing functions such as =>=, =<=, =>==
@@ -1936,50 +2020,64 @@ Passed:
  To be a member of =Ord=, a type must first have membership in the
  prestigious and exclusive =Eq= club.
 
- #+BEGIN_EXAMPLE
-    ghci> "Abrakadabra" < "Zebra"
-    True
-    ghci> "Abrakadabra" `compare` "Zebra"
-    LT
-    ghci> 5 >= 2
-    True
-    ghci> 5 `compare` 3
-    GT
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+"Abrakadabra" < "Zebra"
+"Abrakadabra" `compare` "Zebra"
+5 >= 2
+5 `compare` 3
+ #+end_src
+
+ #+RESULTS:
+ : True
+ : LT
+ : True
+ : GT
 
  Members of =Show= can be presented as strings. All types covered so far
  except for functions are a part of =Show=. The most used function that
  deals with the =Show= typeclass is show. It takes a value whose type is
  a member of =Show= and presents it to us as a string.
 
- #+BEGIN_EXAMPLE
-    ghci> show 3
-    "3"
-    ghci> show 5.334
-    "5.334"
-    ghci> show True
-    "True"
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+show 3
+show 5.334
+show True
+ #+end_src
+
+ #+RESULTS:
+ : 3
+ : 5.334
+ : True
 
  =Read= is sort of the opposite typeclass of =Show=. The =read= function
  takes a string and returns a type which is a member of =Read=.
 
- #+BEGIN_EXAMPLE
-    ghci> read "True" || False
-    True
-    ghci> read "8.2" + 3.8
-    12.0
-    ghci> read "5" - 2
-    3
-    ghci> read "[1,2,3,4]" ++ [3]
-    [1,2,3,4,3]
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+read "True" || False
+read "8.2" + 3.8
+read "5" - 2
+read "[1,2,3,4]" ++ [3]
+ #+end_src
+
+ #+RESULTS:
+ : True
+ : 12.0
+ : 3
+ : [1,2,3,4,3]
 
  So far so good. Again, all types covered so far are in this typeclass.
  But what happens if we try to do just =read "4"=?
 
+ #+begin_src haskell :results output
+read "4"
+ #+end_src
+
+ #+RESULTS:
+ : *** Exception: Prelude.read: no parse
+
+
  #+BEGIN_EXAMPLE
-    ghci> read "4"
+    ghci>
     <interactive>:1:0:
         Ambiguous type variable `a' in the constraint:
           `Read a' arising from a use of `read' at <interactive>:1:0-7
@@ -1994,10 +2092,13 @@ Passed:
  =Read= class, it just doesn't know which one. Let's take a look at the
  type signature of =read=.
 
- #+BEGIN_EXAMPLE
-    ghci> :t read
-    read :: (Read a) => String -> a
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+:t read
+ #+end_src
+
+ #+RESULTS:
+ : read :: Read a => String -> a
+
 
  See? It returns a type that's part of =Read= but if we don't try to use
  it in some way later, it has no way of knowing which type. That's why we
@@ -2006,18 +2107,20 @@ Passed:
  by adding =::= at the end of the expression and then specifying a type.
  Observe:
 
- #+BEGIN_EXAMPLE
-    ghci> read "5" :: Int
-    5
-    ghci> read "5" :: Float
-    5.0
-    ghci> (read "5" :: Float) * 4
-    20.0
-    ghci> read "[1,2,3,4]" :: [Int]
-    [1,2,3,4]
-    ghci> read "(3, 'a')" :: (Int, Char)
-    (3, 'a')
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+read "5" :: Int
+read "5" :: Float
+(read "5" :: Float) * 4
+read "[1,2,3,4]" :: [Int]
+read "(3, 'a')" :: (Int, Char)
+ #+end_src
+
+ #+RESULTS:
+ : 5
+ : 5.0
+ : 20.0
+ : [1,2,3,4]
+ : (3,'a')
 
  Most expressions are such that the compiler can infer what their type is
  by itself. But sometimes, the compiler doesn't know whether to return a
@@ -2035,69 +2138,82 @@ Passed:
  Types in this class: =()=, =Bool=, =Char=, =Ordering=, =Int=, =Integer=,
  =Float= and =Double=.
 
- #+BEGIN_EXAMPLE
-    ghci> ['a'..'e']
-    "abcde"
-    ghci> [LT .. GT]
-    [LT,EQ,GT]
-    ghci> [3 .. 5]
-    [3,4,5]
-    ghci> succ 'B'
-    'C'
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+['a'..'e']
+[LT .. GT]
+[3 .. 5]
+succ 'B'
+ #+end_src
+
+ #+RESULTS:
+ : abcde
+ : [LT,EQ,GT]
+ : [3,4,5]
+ : 'C'
 
  =Bounded= members have an upper and a lower bound.
 
- #+BEGIN_EXAMPLE
-    ghci> minBound :: Int
-    -2147483648
-    ghci> maxBound :: Char
-    '\1114111'
-    ghci> maxBound :: Bool
-    True
-    ghci> minBound :: Bool
-    False
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+minBound :: Int
+maxBound :: Char
+maxBound :: Bool
+minBound :: Bool
+ #+end_src
+
+ #+RESULTS:
+ : -9223372036854775808
+ : '\1114111'
+ : True
+ : False
 
  =minBound= and =maxBound= are interesting because they have a type of
  =(Bounded a) => a=. In a sense they are polymorphic constants.
 
  All tuples are also part of =Bounded= if the components are also in it.
 
- #+BEGIN_EXAMPLE
-    ghci> maxBound :: (Bool, Int, Char)
-    (True,2147483647,'\1114111')
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+maxBound :: (Bool, Int, Char)
+ #+end_src
+
+ #+RESULTS:
+ : (True,9223372036854775807,'\1114111')
 
  =Num= is a numeric typeclass. Its members have the property of being
  able to act like numbers. Let's examine the type of a number.
 
- #+BEGIN_EXAMPLE
-    ghci> :t 20
-    20 :: (Num t) => t
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+:t 20
+ #+end_src
+
+ #+RESULTS:
+ : 20 :: Num p => p
+
 
  It appears that whole numbers are also polymorphic constants. They can
  act like any type that's a member of the =Num= typeclass.
 
- #+BEGIN_EXAMPLE
-    ghci> 20 :: Int
-    20
-    ghci> 20 :: Integer
-    20
-    ghci> 20 :: Float
-    20.0
-    ghci> 20 :: Double
-    20.0
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+20 :: Int
+20 :: Integer
+20 :: Float
+20 :: Double
+ #+end_src
+
+ #+RESULTS:
+ : 20
+ : 20
+ : 20.0
+ : 20.0
 
  Those are types that are in the =Num= typeclass. If we examine the type
  of =*=, we'll see that it accepts all numbers.
 
- #+BEGIN_EXAMPLE
-    ghci> :t (*)
-    (*) :: (Num a) => a -> a -> a
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+:t (*)
+ #+end_src
+
+ #+RESULTS:
+ : (*) :: Num a => a -> a -> a
 
  It takes two numbers of the same type and returns a number of that type.
  That's why =(5 :: Int) * (6 :: Integer)= will result in a type error
@@ -2131,10 +2247,7 @@ Passed:
  signature. That's completely valid and as you can see, the class
  constraints are separated by commas inside the parentheses.
 
-
-
-
-** TODO Syntax in Functions
+** TODO Syntax in Functions [0%]
 *** TODO Pattern matching
 
  #+CAPTION: four!
@@ -2152,12 +2265,11 @@ Passed:
  characters, lists, tuples, etc. Let's make a really trivial function
  that checks if the number we supplied to it is a seven or not.
 
-
- #+BEGIN_EXAMPLE
-    lucky :: (Integral a) => a -> String
-    lucky 7 = "LUCKY NUMBER SEVEN!"
-    lucky x = "Sorry, you're out of luck, pal!"
- #+END_EXAMPLE
+ #+begin_src haskell :compile yes
+lucky :: (Integral a) => a -> String
+lucky 7 = "LUCKY NUMBER SEVEN!"
+lucky x = "Sorry, you're out of luck, pal!"
+ #+end_src
 
  When you call =lucky=, the patterns will be checked from top to bottom
  and when it conforms to a pattern, the corresponding function body will
@@ -2170,15 +2282,18 @@ Passed:
  convoluted if then else tree. However, with it:
 
 
- #+BEGIN_EXAMPLE
-    sayMe :: (Integral a) => a -> String
-    sayMe 1 = "One!"
-    sayMe 2 = "Two!"
-    sayMe 3 = "Three!"
-    sayMe 4 = "Four!"
-    sayMe 5 = "Five!"
-    sayMe x = "Not between 1 and 5"
- #+END_EXAMPLE
+ #+begin_src haskell :results output
+sayMe :: (Integral a) => a -> String
+sayMe 1 = "One!"
+sayMe 2 = "Two!"
+sayMe 3 = "Three!"
+sayMe 4 = "Four!"
+sayMe 5 = "Five!"
+sayMe x = "Not between 1 and 5"
+ #+end_src
+
+ #+RESULTS:
+
 
  Note that if we moved the last pattern (the catch-all one) to the top,
  it would always say ="Not between 1 and 5"=, because it would catch all
@@ -2432,9 +2547,6 @@ Passed:
  make sense to match stuff against =(xs ++ [x,y,z])= or just
  =(xs ++ [x])=, but because of the nature of lists, you can't do that.
 
-
-
-
 *** TODO Guards, guards!
 
  #+CAPTION: guards
@@ -2577,7 +2689,6 @@ main = print $ bmiTell 19
    way.
  #+END_QUOTE
 
-
 *** TODO Where!?
 
  In the previous section, we defined a BMI calculator function and
@@ -2686,9 +2797,6 @@ main = print $ bmiTell 19
  function and define some helper function in its /where/ clause and then
  to give those functions helper functions as well, each with its own
  /where/ clause.
-
-
-
 
 *** TODO Let it be
 
@@ -2815,7 +2923,6 @@ main = print $ bmiTell 19
  function they're being used in. That way, the function body is closer to
  its name and type declaration and to some that's more readable.
 
-
 *** TODO Case expressions
 
  #+CAPTION: case
@@ -2888,10 +2995,7 @@ main = print $ bmiTell 19
               what xs = "a longer list."
  #+END_EXAMPLE
 
-
-
-
-** TODO Recursion
+** TODO Recursion [0%]
 *** TODO Hello recursion!
 
  #+CAPTION: SOVIET RUSSIA
@@ -2928,7 +3032,6 @@ main = print $ bmiTell 19
  of declaring /how/ you get it. That's why there are no while loops or
  for loops in Haskell and instead we many times have to use recursion to
  declare what something is.
-
 
 *** TODO Maximum awesome
 
@@ -3004,7 +3107,6 @@ main = print $ bmiTell 19
 
  #+CAPTION: max
  [[file:media/maxs.png]]
-
 
 *** TODO A few more recursive functions
 
@@ -3140,7 +3242,6 @@ main = print $ bmiTell 19
  Pretty simple and expected. If the head isn't the element then we check
  the tail. If we reach an empty list, the result is =False=.
 
-
 *** TODO Quick, sort!
 
  We have a list of items that can be sorted. Their type is an instance of
@@ -3215,7 +3316,6 @@ main = print $ bmiTell 19
  pivot are dark green. The yellowish gradient thing represents an
  application of quicksort.
 
-
 *** TODO Thinking recursively
 
  We did quite a bit of recursion so far and as you've probably noticed,
@@ -3257,10 +3357,7 @@ main = print $ bmiTell 19
  are usually broken into a head and a tail via pattern matching) and on
  which part you'll use the recursive call.
 
-
-
-
-** TODO Higher order functions
+** TODO Higher order functions [0%]
 
  #+CAPTION: sun
  [[file:media/sun.png]]
@@ -3273,9 +3370,6 @@ main = print $ bmiTell 19
  /is/ instead of defining steps that change some state and maybe looping
  them, higher order functions are indispensable. They're a really
  powerful way of solving problems and thinking about programs.
-
-
-
 
 *** TODO Curried functions
 
@@ -3428,7 +3522,6 @@ main = print $ bmiTell 19
  get a textual representation of that number. And the textual
  representation of =2= is just the string ="2"=, which then gets printed
  to our screen.
-
 
 *** TODO Some higher-orderism is in order
 
@@ -3586,7 +3679,6 @@ main = print $ bmiTell 19
     ghci> zipWith (flip' div) [2,2..] [10,8,6,4,2]
     [5,4,3,2,1]
  #+END_EXAMPLE
-
 
 *** TODO Maps and filters
 
@@ -3840,7 +3932,6 @@ main = print $ bmiTell 19
  that's equivalent to =(4*)=. And then, we just apply =5= to that
  function. So that's like writing =(4*) 5= or just =4 * 5=.
 
-
 *** TODO Lambdas
 
  #+CAPTION: lambda
@@ -3934,9 +4025,6 @@ main = print $ bmiTell 19
  or a filter. So use lambdas in this way when you want to make it
  explicit that your function is mainly meant to be partially applied and
  passed on to a function as a parameter.
-
-
-
 
 *** TODO Only folds and horses
 
@@ -4200,7 +4288,6 @@ main = print $ bmiTell 19
  =filter= doesn't, so we use =takeWhile= to cut the scanlist off at the
  first occurence of a sum greater than 1000.
 
-
 *** TODO Function application with $
 
  Alright, next up, we'll take a look at the =$= function, also called
@@ -4248,9 +4335,6 @@ main = print $ bmiTell 19
     ghci> map ($ 3) [(4+), (10*), (^2), sqrt]
     [7.0,30.0,9.0,1.7320508075688772]
  #+END_EXAMPLE
-
-
-
 
 *** TODO Function composition
 
@@ -4408,10 +4492,7 @@ main = print $ bmiTell 19
  It wouldn't win any code golf competition, but someone reading the
  function will probably find it easier to read than a composition chain.
 
-
-
-
-** TODO Modules
+** TODO Modules [0%]
 *** TODO Loading modules
 
  #+CAPTION: modules
@@ -4536,9 +4617,6 @@ main = print $ bmiTell 19
  [[http://haskell.org/hoogle][Hoogle]]. It's a really awesome Haskell
  search engine, you can search by name, module name or even type
  signature.
-
-
-
 
 *** TODO Data.List
 
@@ -5180,7 +5258,6 @@ main = print $ bmiTell 19
  =(==) `on` something= and when you're dealing with /By/ functions that
  take an ordering function, you usually do =compare `on` something=.
 
-
 *** TODO Data.Char
 
  #+CAPTION: lego char
@@ -5398,7 +5475,6 @@ main = print $ bmiTell 19
     ghci> decode 5 . encode 5 $ "This is a sentence"
     "This is a sentence"
  #+END_EXAMPLE
-
 
 *** TODO Data.Map
 
@@ -5716,7 +5792,6 @@ main = print $ bmiTell 19
  list of functions in the
  [[http://www.haskell.org/ghc/docs/latest/html/libraries/containers/Data-Map.html#v%3Aassocs][documentation]].
 
-
 *** TODO Data.Set
 
  #+CAPTION: legosets
@@ -5854,7 +5929,6 @@ main = print $ bmiTell 19
  =setNub= is generally faster than =nub= on big lists but as you can see,
  =nub= preserves the ordering of the list's elements, while =setNub= does
  not.
-
 
 *** TODO Making our own modules
 
@@ -6055,10 +6129,7 @@ main = print $ bmiTell 19
  just import your module the next time you're writing a program that
  requires some of the same functionality.
 
-
-
-
-** TODO Making Our Own Types and Typeclasses
+** TODO Making Our Own Types and Typeclasses [0%]
 
  In the previous chapters, we covered some existing Haskell types and
  typeclasses. In this chapter, we'll learn how to make our own and how to
@@ -6306,7 +6377,6 @@ main = print $ bmiTell 19
  abstract in such a way that we hide their implementation. Also, whoever
  uses our module can't pattern match against the value constructors.
 
-
 *** TODO Record syntax
 
  #+CAPTION: record
@@ -6439,7 +6509,6 @@ main = print $ bmiTell 19
  are the components of a vector. However, in our =Person= and =Car=
  types, it wasn't so obvious and we greatly benefited from using record
  syntax.
-
 
 *** TODO Type parameters
 
@@ -6671,7 +6740,6 @@ main = print $ bmiTell 19
     ghci> Vector 2 9 3 `vectMult` (Vector 4 9 5 `scalarMult` Vector 9 2 4)
     Vector 148 666 222
  #+END_EXAMPLE
-
 
 *** TODO Derived instances
 
@@ -6932,9 +7000,6 @@ main = print $ bmiTell 19
  #+END_EXAMPLE
 
  That's pretty awesome.
-
-
-
 
 *** TODO Type synonyms
 
@@ -7205,9 +7270,6 @@ main = print $ bmiTell 19
  We could have used a =Maybe a= to represent the result but then we
  wouldn't know why we couldn't get the code. But now, we have information
  about the failure in our result type.
-
-
-
 
 *** TODO Recursive data structures
 
@@ -7486,7 +7548,6 @@ main = print $ bmiTell 19
  powerful concept in Haskell. We can use them to make anything from
  boolean values and weekday enumerations to binary search trees and more!
 
-
 *** TODO Typeclasses 102
 
  #+CAPTION: tweet
@@ -7759,7 +7820,6 @@ main = print $ bmiTell 19
  you all the typeclasses that =Maybe= is an instance of. Also =:info= can
  show you the type declaration of a function. I think that's pretty cool.
 
-
 *** TODO A yes-no typeclass
 
  #+CAPTION: yesno
@@ -7907,9 +7967,6 @@ main = print $ bmiTell 19
     ghci> yesnoIf Nothing "YEAH!" "NO!"
     "NO!"
  #+END_EXAMPLE
-
-
-
 
 *** TODO The Functor typeclass
 
@@ -8125,7 +8182,6 @@ main = print $ bmiTell 19
    tree where that's not the case. We'll go over the functor laws in more
    detail in one of the next chapters.
  #+END_QUOTE
-
 
 *** TODO Kinds and some type-foo
 
@@ -8359,10 +8415,7 @@ main = print $ bmiTell 19
  read on, but if you understand how kinds work, chances are that you have
  a very solid grasp of Haskell's type system.
 
-
-
-
-** TODO Input and Output
+** TODO Input and Output [0%]
 
  #+CAPTION: poor dog
  [[file:media/dognap.png]]
@@ -9130,7 +9183,6 @@ main = print $ bmiTell 19
  a string and returns an I/O action. That I/O action will, when
  performed, print beautiful poetry to your terminal.
 
-
 *** TODO Files and streams
 
  #+CAPTION: streams
@@ -9894,7 +9946,6 @@ main = print $ bmiTell 19
     Take salad out of the oven
  #+END_EXAMPLE
 
-
 *** TODO Command line arguments
 
  #+CAPTION: COMMAND LINE ARGUMENTS!!! ARGH
@@ -10202,9 +10253,6 @@ main = print $ bmiTell 19
  =errorExit :: IO ()=) and then check for possible erroneous input and if
  there is erroneous input, perform the error reporting I/O action.
  Another way is to use exceptions, which we will meet soon.
-
-
-
 
 *** TODO Randomness
 
@@ -10637,7 +10685,6 @@ main = print $ bmiTell 19
  but I like the first one more since it does less stuff in =main= and
  also provides us with a function that we can reuse easily.
 
-
 *** TODO Bytestrings
 
  #+CAPTION: like normal string, only they byte ... what a pedestrian pun
@@ -10844,7 +10891,6 @@ main = print $ bmiTell 19
  good performance boosts with very little effort on your part. I usually
  write programs by using normal strings and then convert them to use
  bytestrings if the performance is not satisfactory.
-
 
 *** TODO Exceptions
 
@@ -11213,10 +11259,7 @@ main = print $ bmiTell 19
  result that they yield when performed is of type =Either a b=, meaning
  it's either =Left a= or =Right b=.
 
-
-
-
-** TODO Functionally Solving Problems
+** TODO Functionally Solving Problems [50%]
 
  In this chapter, we'll take a look at a few interesting problems and how
  to think functionally to solve them as elegantly as possible. We
@@ -11509,7 +11552,6 @@ main = do
  =Nothing= on every step. If you're feeling up to the challenge though,
  you can go ahead and try it! Hint: you can use =reads= to see if a read
  was successful or not.
-
 
 *** TODO Heathrow to London
 
@@ -11965,10 +12007,7 @@ main = do
  feed to what we just wrote. If you get stack overflows, try using
  =foldl'= instead of =foldl=, because =foldl'= is strict.
 
-
-
-
-** TODO Functors, Applicative Functors and Monoids
+** TODO Functors, Applicative Functors and Monoids [0%]
 
  Haskell's combination of purity, higher order functions, parameterized
  algebraic data types, and typeclasses allows us to implement
@@ -12551,9 +12590,6 @@ main = do
  still a function, only when we give it a number, it will be multiplied
  by three and then it will go through the attached transformation where
  it will be added to three. This is what happens with composition.
-
-
-
 
 *** TODO Applicative functors
 
@@ -13461,7 +13497,6 @@ main = do
  on any number of applicative functors and take advantage of the
  semantics of each one.
 
-
 *** TODO The newtype keyword
 
  #+CAPTION: why\_ so serious?
@@ -13871,9 +13906,6 @@ main = do
  of a type class, chances are you're looking for a /newtype/. And if you
  want to make something completely new, odds are good that you're looking
  for the /data/ keyword.
-
-
-
 
 *** TODO Monoids
 
@@ -14707,10 +14739,7 @@ main = do
  What's cool is that all of these trick aren't limited to trees, they
  work on any instance of =Foldable=.
 
-
-
-
-** TODO A Fistful of Monads
+** TODO A Fistful of Monads [0%]
 
  When we first talked about functors, we saw that they were a useful
  concept for values that can be mapped over. Then, we took that concept
@@ -14812,7 +14841,6 @@ main = do
  with values that come with certain contexts, it takes a bit of thinking
  to see how these fancy values are fed to functions and how to take into
  account their behavior, but you'll see that it's easy as one two three.
-
 
 *** TODO Getting our feet wet with Maybe
 
@@ -14972,7 +15000,6 @@ main = do
  We'll come back to =Maybe= in a minute, but first, let's check out the
  type class that belongs to monads.
 
-
 *** TODO The Monad type class
 
  Just like functors have the =Functor= type class and applicative
@@ -15081,9 +15108,6 @@ main = do
  were able to extract the value from a =Maybe= without pattern-matching.
  And we still didn't lose the context of our =Maybe= value, because when
  it's =Nothing=, the result of using =>>== will be =Nothing= as well.
-
-
-
 
 *** TODO Walk the line
 
@@ -15447,7 +15471,6 @@ main = do
  our values were values with failure and so when we applied functions to
  such values, the possibility of failure was always taken into account.
 
-
 *** TODO do notation
 
  Monads in Haskell are so useful that they got their own special syntax
@@ -15719,9 +15742,6 @@ main = do
  The failed pattern matching has caused a failure within the context of
  our monad instead of causing a program-wide failure, which is pretty
  neat.
-
-
-
 
 *** TODO The list monad
 
@@ -16132,7 +16152,6 @@ main = do
  the number of moves to take instead of that number being hardcoded like
  it is now.
 
-
 *** TODO Monad laws
 
  #+CAPTION: the court finds you guilty of peeing all over everything
@@ -16351,10 +16370,7 @@ main = do
  take a look at a whole bunch of other cool monads and we'll also learn
  how to make our own.
 
-
-
-
-** TODO For a Few Monads More
+** TODO For a Few Monads More [0%]
 
  #+CAPTION: there are two kinds of people in the world, my friend. those
  who learn them a haskell and those who have the job of coding java
@@ -17105,7 +17121,6 @@ main = do
  Oh, by the way, the song Final Countdown by Europe is now stuck in your
  head. Enjoy!
 
-
 *** TODO Reader? Ugh, not this joke again.
 
  #+CAPTION: bang youre dead
@@ -17231,7 +17246,6 @@ main = do
  thing, we can use the reader monad to sort of extract their future
  results and the =>>== implementation will make sure that it all works
  out.
-
 
 *** TODO Tasteful stateful computations
 
@@ -17643,7 +17657,6 @@ main = do
  Nice. Doing these sort of things that require some state to be kept in
  between steps just became much less of a hassle!
 
-
 *** TODO Error error on the wall
 
  We know by now that =Maybe= is used to add a context of possible failure
@@ -17760,7 +17773,6 @@ main = do
  tightrope walker. As an exercise, you can rewrite that with the error
  monad so that when the tightrope walker slips and falls, we remember how
  many birds were on each side of the pole when he fell.
-
 
 *** TODO Some useful monadic functions
 
@@ -18521,7 +18533,6 @@ main = do
     canReachIn x start end = end `elem` inMany x start
  #+END_EXAMPLE
 
-
 *** TODO Making monads
 
  #+CAPTION: kewl
@@ -18774,10 +18785,7 @@ main = do
  think that's quite fetching! By now, we should have a pretty good grasp
  on monads and what they're about.
 
-
-
-
-** TODO Zippers
+** TODO Zippers [0%]
 
  #+CAPTION: hi im chet
  [[file:media/60sdude.png]]
@@ -18807,7 +18815,6 @@ main = do
  In this chapter, we'll see how we can take some data structure and focus
  on a part of it in a way that makes changing its elements easy and
  walking around it efficient. Nice!
-
 
 *** TODO Taking a walk
 
@@ -18937,7 +18944,6 @@ main = do
  In the next section, we'll find a better way of focusing on a sub-tree,
  one that allows us to efficiently switch focus to sub-trees that are
  nearby.
-
 
 *** TODO A trail of breadcrumbs
 
@@ -19231,7 +19237,6 @@ main = do
  to focus on the root of our tree and see the changes that we've done in
  proper perspective.
 
-
 *** TODO Focusing on lists
 
  Zippers can be used with pretty much any data structure, so it's no
@@ -19330,7 +19335,6 @@ main = do
  use a zipper so that you know which line the cursor is currently focused
  on. By using a zipper, it would also make it easier to insert new lines
  anywhere in the text or delete existing ones.
-
 
 *** TODO A very simple file system
 
@@ -19568,7 +19572,6 @@ main = do
  zippers however, we get the ability to easily and efficiently walk
  around our data structures, so the persistence of Haskell's data
  structures really begins to shine.
-
 
 *** TODO Watch your step
 
